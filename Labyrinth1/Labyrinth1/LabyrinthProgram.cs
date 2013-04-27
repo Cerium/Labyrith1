@@ -45,7 +45,6 @@ namespace Labyrinth
                             player.Points++;
                             playfield.print();
                         }
-
                         break;
                     case "U":
                         if (!playfield.move(Direction.Up))
@@ -57,7 +56,6 @@ namespace Labyrinth
                             player.Points++;
                             playfield.print();
                         }
-
                         break;
                     case "R":
                         if (!playfield.move(Direction.Right))
@@ -69,7 +67,6 @@ namespace Labyrinth
                             player.Points++;
                             playfield.print();
                         }
-
                         break;
                     case "D":
                         if (!playfield.move(Direction.Down))
@@ -81,7 +78,6 @@ namespace Labyrinth
                             player.Points++;
                             playfield.print();
                         }
-
                         break;
                     default:
                         {
