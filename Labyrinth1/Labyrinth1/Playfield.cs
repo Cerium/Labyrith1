@@ -4,11 +4,11 @@ namespace Labyrinth
 {
     public class Playfield
     {
-        int[,] labyrinth = new int[7, 7];
+        public const int PlayFieldWidth = 7;
+        public const int PlayFieldHeight = 7;
+
+        int[,] labyrinth = new int[PlayFieldHeight, PlayFieldWidth];
         Position player;
-
-
-
 
         public bool isWinning()
         {
@@ -73,9 +73,6 @@ namespace Labyrinth
                         {
                             if (labyrinth[temp1, temp2] == 1) Console.Write("X");
                             else
-
-
-
                             {
 
 
