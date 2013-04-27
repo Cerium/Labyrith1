@@ -21,14 +21,14 @@ namespace Labyrinth
 
         bool isValidPosition(Position position)
         {
-            return labyrinth[position.x, position.y] == 0 && position.isValidPosition();
+            return labyrinth[position.X, position.Y] == 0 && position.isValidPosition();
         }
 
         bool isValidMove(Position position, Direction direction)
         {
             if (position.isWinning()) return false;
 
-            Position newPosition = new Position(position.x, position.y);
+            Position newPosition = new Position(position.X, position.Y);
 
             newPosition.move(direction);
 
@@ -37,11 +37,11 @@ namespace Labyrinth
 
         bool isBlankPosition(Position position)
         {
-            return labyrinth[position.x, position.y] == -1;
+            return labyrinth[position.X, position.Y] == -1;
         }
         bool isBlankMove(Position position, Direction direction)
         {
-            Position newPosition = new Position(position.x, position.y);
+            Position newPosition = new Position(position.X, position.Y);
             newPosition.move(direction);
             bool isBlankPos = isBlankPosition(newPosition);
 
@@ -49,13 +49,13 @@ namespace Labyrinth
         }
 
 
-        public void print()
+        public void RenderGameField()
         {
             for (int temp2 = 0; temp2 < 7; temp2++)
             {
                 for (int temp1 = 0; temp1 < 7; temp1++)
                 {
-                    if (player.x == temp1 && player.y == temp2)
+                    if (player.X == temp1 && player.Y == temp2)
                     {
                         Console.Write("*");
                     }
@@ -77,7 +77,7 @@ namespace Labyrinth
                 Console.WriteLine();
             }
         }
-        public void reset()
+        public void CreateGameField()
         {
             player = new Position();
 
@@ -89,22 +89,21 @@ namespace Labyrinth
                 }
             }
 
-            labyrinth[3, 3] = 0;
+            labyrinth[Position.DefaultStartPositionX, Position.DefaultStartPositionY] = 0;
 
-            Direction d = Direction.Blank;
-            Random random = new Random();
-            Position tempPos2 = new Position();
-            while (!tempPos2.isWinning())
+            Direction currentDirection = Direction.Blank;            
+            Position currentPosition = new Position();
+            Random directionGenerator = new Random();
+            while (!currentPosition.isWinning())
             {
                 do
                 {
-                    int randomNumber = random.Next() % 4;
-                    d = (Direction)(randomNumber);
-                } while (!isBlankMove(tempPos2, d));
+                    int nextDirection = directionGenerator.Next() % 4;
+                    currentDirection = (Direction)(nextDirection);
+                } while (!isBlankMove(currentPosition, currentDirection));
 
-                tempPos2.move(d);
-
-                labyrinth[tempPos2.x, tempPos2.y] = 0;
+                currentPosition.move(currentDirection);
+                labyrinth[currentPosition.X, currentPosition.Y] = 0;
             }
             for (int i = 0; i < 7; i++)
             {
@@ -112,7 +111,7 @@ namespace Labyrinth
                 {
                     if (labyrinth[i, j] == -1)
                     {
-                        int randomNumber = random.Next();
+                        int randomNumber = directionGenerator.Next();
                         if (randomNumber % 3 == 0) labyrinth[i, j] = 0;
                         else labyrinth[i, j] = 1;
                     }

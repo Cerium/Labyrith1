@@ -13,9 +13,9 @@ namespace Labyrinth
         public static void NewGame()
         {
             message.IntroOfLabyrinthGame();
-            playfield.reset();
+            playfield.CreateGameField();
             message.NewLine();
-            playfield.print();
+            playfield.RenderGameField();
             player = new Player();
         }
 
@@ -43,7 +43,7 @@ namespace Labyrinth
                         else
                         {
                             player.Points++;
-                            playfield.print();
+                            playfield.RenderGameField();
                         }
                         break;
                     case "U":
@@ -54,7 +54,7 @@ namespace Labyrinth
                         else
                         {
                             player.Points++;
-                            playfield.print();
+                            playfield.RenderGameField();
                         }
                         break;
                     case "R":
@@ -65,7 +65,7 @@ namespace Labyrinth
                         else
                         {
                             player.Points++;
-                            playfield.print();
+                            playfield.RenderGameField();
                         }
                         break;
                     case "D":
@@ -76,7 +76,7 @@ namespace Labyrinth
                         else
                         {
                             player.Points++;
-                            playfield.print();
+                            playfield.RenderGameField();
                         }
                         break;
                     default:
