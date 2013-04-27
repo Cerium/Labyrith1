@@ -8,8 +8,6 @@ namespace Labyrinth
 {
     public class Player
     {
-        
-
         private string name = string.Empty;
         public string Name
         {
@@ -54,13 +52,8 @@ namespace Labyrinth
             this.Position = position;
         }
 
-        public bool Move(Direction direction, int fieldSize)
+        public bool Move(Direction direction)
         {
-            if (this.Position.IsWinning(fieldSize))
-            {
-                return false;
-            }
-
             switch (direction)
             {
                 case Direction.Left:

@@ -13,9 +13,14 @@ namespace Labyrinth
         public static void NewGame()
         {
             message.IntroOfLabyrinthGame();
-            playfield.CreateGameField();
+
+            Position playerInitioalPos = new Position(Configuration.GAME_FIELD_SIZE / 2, Configuration.GAME_FIELD_SIZE / 2);
+
+            player = new Player(playerInitioalPos);
+            playfield.CreateGameField(player);
+
             message.NewLine();
-            Position playerInitioalPos = new Position(3, 3);
+
             player = new Player(playerInitioalPos);
             playfield.RenderGameField(player);            
         }
@@ -38,7 +43,7 @@ namespace Labyrinth
                         NewGame();
                         break;
                     case "L":
-                        if (!player.Move(Direction.Left, Configuration.GAME_FIELD_SIZE))
+                        if (!player.Move(Direction.Left))
                         {
                             message.PrintInvalidMoveMessage();
                         }
@@ -49,7 +54,7 @@ namespace Labyrinth
                         }
                         break;
                     case "U":
-                        if (!player.Move(Direction.Up, Configuration.GAME_FIELD_SIZE))
+                        if (!player.Move(Direction.Up))
                         {
                             message.PrintInvalidMoveMessage();
                         }
@@ -60,7 +65,7 @@ namespace Labyrinth
                         }
                         break;
                     case "R":
-                        if (!player.Move(Direction.Right, Configuration.GAME_FIELD_SIZE))
+                        if (!player.Move(Direction.Right))
                         {
                             message.PrintInvalidMoveMessage();
                         }
@@ -71,7 +76,7 @@ namespace Labyrinth
                         }
                         break;
                     case "D":
-                        if (!player.Move(Direction.Down, Configuration.GAME_FIELD_SIZE))
+                        if (!player.Move(Direction.Down))
                         {
                             message.PrintInvalidMoveMessage();
                         }
