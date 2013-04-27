@@ -6,7 +6,7 @@
         public const int DefaultStartPositionY = 3;
 
         public int X { get; set; }
-        public int Y { get; set; };
+        public int Y { get; set; }
 
         public Position()
         {
