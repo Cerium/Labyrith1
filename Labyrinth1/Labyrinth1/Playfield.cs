@@ -90,7 +90,6 @@ namespace Labyrinth
             }
 
             labyrinth[Position.DefaultStartPositionX, Position.DefaultStartPositionY] = 0;
-
             Direction currentDirection = Direction.Blank;            
             Position currentPosition = new Position();
             Random directionGenerator = new Random();

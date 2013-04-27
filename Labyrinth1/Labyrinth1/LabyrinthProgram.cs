@@ -27,6 +27,7 @@ namespace Labyrinth
             string input = string.Empty;
             while ((input = Console.ReadLine()) != "exit")
             {
+                
                 switch (input)
                 {
                     case "top":
