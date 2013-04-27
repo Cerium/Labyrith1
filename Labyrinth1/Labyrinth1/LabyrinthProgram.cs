@@ -14,9 +14,9 @@ namespace Labyrinth
 
         public static void NewGame()
         {
-            message.intro();
+            message.IntroOfLabyrinthGame();
             playfield.reset();
-            message.nl();
+            message.NewLine();
             playfield.print();
             player = new Player();
         }
@@ -39,7 +39,7 @@ namespace Labyrinth
                         break;
                     case "L":
 
-                        if (!playfield.move(Direction.Left)) message.invalid();
+                        if (!playfield.move(Direction.Left)) message.PrintInvalidMoveMessage();
                         else
                         {
                             player.Points++;
@@ -49,7 +49,7 @@ namespace Labyrinth
                         break;
                     case "U":
 
-                        if (!playfield.move(Direction.Up)) message.invalid();
+                        if (!playfield.move(Direction.Up)) message.PrintInvalidMoveMessage();
                         else
                         {
                             player.Points++;
@@ -59,7 +59,7 @@ namespace Labyrinth
                         break;
                     case "R":
 
-                        if (!playfield.move(Direction.Right)) message.invalid();
+                        if (!playfield.move(Direction.Right)) message.PrintInvalidMoveMessage();
                         else
                         {
                             player.Points++;
@@ -69,7 +69,7 @@ namespace Labyrinth
                         break;
                     case "D":
 
-                        if (!playfield.move(Direction.Down)) message.invalid();
+                        if (!playfield.move(Direction.Down)) message.PrintInvalidMoveMessage();
                         else
                         {
                             player.Points++;
@@ -79,7 +79,7 @@ namespace Labyrinth
                         break;
                     default:
                         {
-                            message.invalid(); 
+                            message.PrintInvalidMoveMessage(); 
                             break;
                         }
 
@@ -89,7 +89,7 @@ namespace Labyrinth
                     message.win(player.Points);
                     player.Name = Console.ReadLine();
                     scores.Add(Configuration.FILE_NAME, player);
-                    message.nl();
+                    message.NewLine();
                     NewGame();
                 }
                 message.move();
