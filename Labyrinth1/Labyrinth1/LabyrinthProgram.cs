@@ -5,7 +5,7 @@ namespace Labyrinth
 {
     public class LabyrinthProgram
     {
-        readonly static Playfield playfield = new Playfield();
+        readonly static Playfield playfield = new Playfield(Configuration.GAME_FIELD_SIZE);
         readonly static Message message = new Message();
         private static Scoreboard scores;
         private static Player player = new Player();

@@ -4,8 +4,13 @@ namespace Labyrinth
 {
     public class Playfield
     {
-        int[,] labyrinth = new int[7, 7];
+        private readonly int[,] labyrinth;
         Position player;
+
+        public Playfield(int fieldSize)
+        {
+            labyrinth = new int[fieldSize,fieldSize];
+        }
 
         public bool isWinning()
         {

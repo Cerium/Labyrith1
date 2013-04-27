@@ -9,6 +9,6 @@ namespace Labyrinth
     class Configuration
     {
         public const string FILE_NAME = "scoreboard";
-        public const int GameFieldSize = 6;
+        public const int GAME_FIELD_SIZE = 6;
     }
 }
