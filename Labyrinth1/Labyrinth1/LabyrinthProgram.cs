@@ -26,7 +26,7 @@ namespace Labyrinth
             NewGame();
             scores=new Scoreboard();
             String input = "";
-            message.move();
+            message.PrintAlloudMoves();
             while ((input = Console.ReadLine()) != "exit")
             {
                 switch (input)
@@ -86,13 +86,13 @@ namespace Labyrinth
                 }
                 if (playfield.isWinning())
                 {
-                    message.win(player.Points);
+                    message.PrintWonMessage(player.Points);
                     player.Name = Console.ReadLine();
                     scores.Add(Configuration.FILE_NAME, player);
                     message.NewLine();
                     NewGame();
                 }
-                message.move();
+                message.PrintAlloudMoves();
             }
             Console.Write("Good Bye!");
             Console.ReadKey();
