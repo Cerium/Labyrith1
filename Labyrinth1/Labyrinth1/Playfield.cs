@@ -7,9 +7,6 @@ namespace Labyrinth
         int[,] labyrinth = new int[7, 7];
         Position player;
 
-
-
-
         public bool isWinning()
         {
             return player.isWinning();
@@ -24,9 +21,6 @@ namespace Labyrinth
 
         bool isValidPosition(Position position)
         {
-
-
-
             return labyrinth[position.x, position.y] == 0 && position.isValidPosition();
         }
 
@@ -61,19 +55,21 @@ namespace Labyrinth
             {
                 for (int temp1 = 0; temp1 < 7; temp1++)
                 {
-                    if (player.x == temp1 && player.y == temp2) Console.Write("*");
+                    if (player.x == temp1 && player.y == temp2)
+                    {
+                        Console.Write("*");
+                    }
                     else
                     {
-                        if (labyrinth[temp1, temp2] == 0) Console.Write("-");
+                        if (labyrinth[temp1, temp2] == 0)
+                        {
+                            Console.Write("-");
+                        }
                         else
                         {
-                            if (labyrinth[temp1, temp2] == 1) Console.Write("X");
-                            else
-
-
-
+                            if (labyrinth[temp1, temp2] == 1)
                             {
-                                Console.Write("+");
+                                Console.Write("X");
                             }
                         }
                     }
