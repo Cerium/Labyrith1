@@ -33,7 +33,7 @@ namespace Labyrinth
                 switch (input)
                 {
                     case "top":
-                        scores.pokazvane();
+                        scores.Show();
                         break;
                     case "restart":
                         NewGame();
@@ -91,7 +91,7 @@ namespace Labyrinth
                     string name = Console.ReadLine();
                     try
                     {
-                        scores.add(name, moves);
+                        scores.Add(name, moves);
                     }
                     finally
                     {                        

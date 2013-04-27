@@ -11,7 +11,7 @@ namespace Labyrinth
             FileStream stream = file.Open(FileMode.OpenOrCreate, FileAccess.Read);
             stream.Close();
         }
-        public void pokazvane()
+        public void Show()
         {
             create();
             FileInfo file = new FileInfo("scoreboard");
@@ -30,7 +30,7 @@ namespace Labyrinth
             fileReader.Close();
         }
         
-        public void add(string name, int score)
+        public void Add(string name, int score)
         {
             create(); 
             
