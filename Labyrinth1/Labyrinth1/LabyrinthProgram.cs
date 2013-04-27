@@ -14,7 +14,7 @@ namespace Labyrinth
 
         public static void NewGame()
         {
-            message.IntroOfGameLabyrith();
+            message.IntroOfLabyrithGame();
             playfield.reset();
             message.PrintingNewLine();
             playfield.print();

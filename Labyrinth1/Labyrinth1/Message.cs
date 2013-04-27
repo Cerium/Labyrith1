@@ -14,7 +14,7 @@ namespace Labyrinth
             Console.Write("Enter your move (L=left, R=right, U=up, D=down): ");
         }
 
-        public void IntroOfGameLabyrith()
+        public void IntroOfLabyrithGame()
         {
             Console.WriteLine("Welcome to \"Labyrinth\" game. Please try to escape. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.");
         }
