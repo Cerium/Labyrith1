@@ -12,7 +12,7 @@ namespace Labyrinth
         static Scoreboard scores;
         static int moves = 0;
 
-        public static void newGame()
+        public static void NewGame()
         {
             message.intro();
             playfield.reset();
@@ -24,7 +24,7 @@ namespace Labyrinth
         public static void Main(string[] args)
         {
 
-            newGame();
+            NewGame();
             scores=new Scoreboard();
             String input = "";
             message.move();
@@ -36,7 +36,7 @@ namespace Labyrinth
                         scores.pokazvane();
                         break;
                     case "restart":
-                        newGame();
+                        NewGame();
                         break;
                     case "L":
 
@@ -98,7 +98,7 @@ namespace Labyrinth
                        
                     };
                     message.nl();
-                    newGame();
+                    NewGame();
                 }
                 message.move();
             }
