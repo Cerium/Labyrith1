@@ -8,6 +8,6 @@ namespace Labyrinth
 {
     class Configuration
     {
-        public static string FILE_NAME = "scoreboard";
+        public const string FILE_NAME = "scoreboard";
     }
 }
