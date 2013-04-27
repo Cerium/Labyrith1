@@ -14,9 +14,9 @@ namespace Labyrinth
 
         public static void NewGame()
         {
-            message.Intro();
+            message.IntroOfGameLabyrith();
             playfield.reset();
-            message.NewLine();
+            message.PrintingNewLine();
             playfield.print();
             moves = 0;
         }
@@ -27,7 +27,7 @@ namespace Labyrinth
             NewGame();
             scores=new Scoreboard();
             String input = "";
-            message.Move();
+            message.PrintingMoveMessage();
             while ((input = Console.ReadLine()) != "exit")
             {
                 switch (input)
@@ -40,7 +40,7 @@ namespace Labyrinth
                         break;
                     case "L":
 
-                        if (!playfield.move(Direction.Left)) message.Invalid();
+                        if (!playfield.move(Direction.Left)) message.printingInvalidMoveMessage();
                         else
                         {
                             moves++;
@@ -50,7 +50,7 @@ namespace Labyrinth
                         break;
                     case "U":
 
-                        if (!playfield.move(Direction.Up)) message.Invalid();
+                        if (!playfield.move(Direction.Up)) message.printingInvalidMoveMessage();
                         else
                         {
                             moves++;
@@ -60,7 +60,7 @@ namespace Labyrinth
                         break;
                     case "R":
 
-                        if (!playfield.move(Direction.Right)) message.Invalid();
+                        if (!playfield.move(Direction.Right)) message.printingInvalidMoveMessage();
                         else
                         {
                             moves++;
@@ -70,7 +70,7 @@ namespace Labyrinth
                         break;
                     case "D":
 
-                        if (!playfield.move(Direction.Down)) message.Invalid();
+                        if (!playfield.move(Direction.Down)) message.printingInvalidMoveMessage();
                         else
                         {
                             moves++;
@@ -80,14 +80,14 @@ namespace Labyrinth
                         break;
                     default:
                         {
-                            message.Invalid(); 
+                            message.printingInvalidMoveMessage(); 
                             break;
                         }
 
                 }
                 if (playfield.isWinning())
                 {
-                    message.Win(moves);
+                    message.WonGameMessage(moves);
                     string name = Console.ReadLine();
                     try
                     {
@@ -97,10 +97,10 @@ namespace Labyrinth
                     {                        
                        
                     };
-                    message.NewLine();
+                    message.PrintingNewLine();
                     NewGame();
                 }
-                message.Move();
+                message.PrintingMoveMessage();
             }
             Console.Write("Good Bye!");
             Console.ReadKey();

@@ -4,32 +4,32 @@ namespace Labyrinth
 {
     public class Message
     {
-        public void Invalid()
+        public void printingInvalidMoveMessage()
         {
             Console.WriteLine("* Invalid move!");
         }
 
-        public void Move()
+        public void PrintingMoveMessage()
         {
             Console.Write("Enter your move (L=left, R=right, U=up, D=down): ");
         }
 
-        public void Intro()
+        public void IntroOfGameLabyrith()
         {
             Console.WriteLine("Welcome to \"Labyrinth\" game. Please try to escape. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.");
         }
 
-        public void NewLine()
+        public void PrintingNewLine()
         {
             Console.WriteLine();
         }
 
-        public void Win(int moves)
+        public void WonGameMessage(int moves)
         {
             Console.Write("Congratulations! You escaped in {0} moves.\nPlease enter your name for the top scoreboard: ", moves);
         }
 
-        public void Playing()
+        public void GameInfoMessage()
         {
             Console.WriteLine("You are playing \"Labyrinth\" game. Please try to escape. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.");
         }
