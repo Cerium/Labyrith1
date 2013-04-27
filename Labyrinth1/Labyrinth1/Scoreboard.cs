@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 
-namespace Labyrinth1
+namespace Labyrinth
 {
-    class Scoreboard
+    public class Scoreboard
     {
         void create()
         {

@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Labyrinth1
+namespace Labyrinth
 {
-    class LabyrinthProgram
+    public class LabyrinthProgram
     {
         static Playfield playfield = new Playfield();
         static Message message = new Message();
         static Scoreboard scores;
         static int moves = 0;
 
-        static void newGame()
+        public static void newGame()
         {
             message.intro();
             playfield.reset();
@@ -21,7 +21,7 @@ namespace Labyrinth1
             moves = 0;
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
 
             newGame();

@@ -1,11 +1,4 @@
-﻿namespace Labyrinth1
+﻿namespace Labyrinth
 {
-    public enum Direction
-    {
-        Blank = -1,
-        Left = 0,
-        Up = 1,
-        Right = 2,
-        Down = 3
-    };
+    enum Direction { Blank = -1, Left, Up, Right, Down };
 }

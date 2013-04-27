@@ -1,6 +1,6 @@
-﻿namespace Labyrinth1
+﻿namespace Labyrinth
 {
-    class Position
+    public class Position
     {
         public int x;
         public int y;

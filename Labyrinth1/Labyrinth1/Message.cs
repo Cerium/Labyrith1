@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Labyrinth1
+namespace Labyrinth
 {
-    class Message
+    public class Message
     {
         public void invalid()
         {

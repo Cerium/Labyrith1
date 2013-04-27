@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Labyrinth1
+namespace Labyrinth
 {
-    class Playfield
+    public class Playfield
     {
         int[,] labyrinth = new int[7, 7];
         Position player;
