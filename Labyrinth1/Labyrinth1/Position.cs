@@ -22,7 +22,7 @@
 
         public bool move(Direction direction)
         {
-            if (isWinning()) return false;
+            if (CheckHasWon()) return false;
             switch (direction)
             {
                 case Direction.Left:
@@ -42,13 +42,15 @@
             }
             return true;
         }
-        public bool isWinning()
+        public bool CheckHasWon()
         {
-            bool resault;
-            resault = false;
+            bool hasWon = false;
             if (X == 0 || X == 6 || Y == 0 || Y == 6)
-                resault = true;
-            return resault;
+            {
+                hasWon = true;
+            }
+
+            return hasWon;
         }
 
 
