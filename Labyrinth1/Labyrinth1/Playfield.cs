@@ -4,15 +4,15 @@ namespace Labyrinth
 {
     public class Playfield
     {
-        public const int PlayFieldWidth = 7;
-        public const int PlayFieldHeight = 7;
-
-        int[,] labyrinth = new int[PlayFieldHeight, PlayFieldWidth];
+        int[,] labyrinth = new int[7, 7];
         Position player;
+
+
+
 
         public bool isWinning()
         {
-            return player.CheckHasWon();
+            return player.isWinning();
         }
         public bool move(Direction direction)
         {
@@ -27,14 +27,14 @@ namespace Labyrinth
 
 
 
-            return labyrinth[position.X, position.Y] == 0 && position.isValidPosition();
+            return labyrinth[position.x, position.y] == 0 && position.isValidPosition();
         }
 
         bool isValidMove(Position position, Direction direction)
         {
-            if (position.CheckHasWon()) return false;
+            if (position.isWinning()) return false;
 
-            Position newPosition = new Position(position.X, position.Y);
+            Position newPosition = new Position(position.x, position.y);
 
             newPosition.move(direction);
 
@@ -43,11 +43,11 @@ namespace Labyrinth
 
         bool isBlankPosition(Position position)
         {
-            return labyrinth[position.X, position.Y] == -1;
+            return labyrinth[position.x, position.y] == -1;
         }
         bool isBlankMove(Position position, Direction direction)
         {
-            Position newPosition = new Position(position.X, position.Y);
+            Position newPosition = new Position(position.x, position.y);
 
 
 
@@ -65,7 +65,7 @@ namespace Labyrinth
 
                 for (int temp1 = 0; temp1 < 7; temp1++)
                 {
-                    if (player.X == temp1 && player.Y == temp2) Console.Write("*");
+                    if (player.x == temp1 && player.y == temp2) Console.Write("*");
                     else
                     {
                         if (labyrinth[temp1, temp2] == 0) Console.Write("-");
@@ -73,6 +73,9 @@ namespace Labyrinth
                         {
                             if (labyrinth[temp1, temp2] == 1) Console.Write("X");
                             else
+
+
+
                             {
 
 
@@ -101,7 +104,7 @@ namespace Labyrinth
             Direction d = Direction.Blank;
             Random random = new Random();
             Position tempPos2 = new Position();
-            while (!tempPos2.CheckHasWon())
+            while (!tempPos2.isWinning())
             {
                 do
                 {
@@ -111,7 +114,7 @@ namespace Labyrinth
 
                 tempPos2.move(d);
 
-                labyrinth[tempPos2.X, tempPos2.Y] = 0;
+                labyrinth[tempPos2.x, tempPos2.y] = 0;
             }
             for (int i = 0; i < 7; i++)
             {

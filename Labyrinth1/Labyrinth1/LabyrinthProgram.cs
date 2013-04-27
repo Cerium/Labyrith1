@@ -10,97 +10,89 @@ namespace Labyrinth
         static Playfield playfield = new Playfield();
         static Message message = new Message();
         static Scoreboard scores;
-        static int moves = 0;
+        static Player player = new Player();
 
         public static void NewGame()
         {
-            message.IntroOfLabyrithGame();
+            message.intro();
             playfield.reset();
-            message.PrintingNewLine();
+            message.nl();
             playfield.print();
-            moves = 0;
+            player = new Player();
         }
 
         public static void Main(string[] args)
         {
-
             NewGame();
             scores=new Scoreboard();
             String input = "";
-            message.PrintingMessageOfAlloudMovements();
+            message.move();
             while ((input = Console.ReadLine()) != "exit")
             {
                 switch (input)
                 {
                     case "top":
-                        scores.Show();
+                        Console.WriteLine(scores.Show(Configuration.FILE_NAME));
                         break;
                     case "restart":
                         NewGame();
                         break;
                     case "L":
 
-                        if (!playfield.move(Direction.Left)) message.PrintingInvalidMoveMessage();
+                        if (!playfield.move(Direction.Left)) message.invalid();
                         else
                         {
-                            moves++;
+                            player.Points++;
                             playfield.print();
                         }
                         
                         break;
                     case "U":
 
-                        if (!playfield.move(Direction.Up)) message.PrintingInvalidMoveMessage();
+                        if (!playfield.move(Direction.Up)) message.invalid();
                         else
                         {
-                            moves++;
+                            player.Points++;
                             playfield.print();
                         }
                         
                         break;
                     case "R":
 
-                        if (!playfield.move(Direction.Right)) message.PrintingInvalidMoveMessage();
+                        if (!playfield.move(Direction.Right)) message.invalid();
                         else
                         {
-                            moves++;
+                            player.Points++;
                             playfield.print();
                         }
                         
                         break;
                     case "D":
 
-                        if (!playfield.move(Direction.Down)) message.PrintingInvalidMoveMessage();
+                        if (!playfield.move(Direction.Down)) message.invalid();
                         else
                         {
-                            moves++;
+                            player.Points++;
                             playfield.print();
                         }
                         
                         break;
                     default:
                         {
-                            message.PrintingInvalidMoveMessage(); 
+                            message.invalid(); 
                             break;
                         }
 
                 }
                 if (playfield.isWinning())
                 {
-                    message.WonGameMessage(moves);
-                    string name = Console.ReadLine();
-                    try
-                    {
-                        scores.Add(name, moves);
-                    }
-                    finally
-                    {                        
-                       
-                    };
-                    message.PrintingNewLine();
+                    message.win(player.Points);
+                    player.Name = Console.ReadLine();
+                    scores.Add(Configuration.FILE_NAME, player);
+                    message.nl();
                     NewGame();
                 }
-                message.PrintingMessageOfAlloudMovements();
+                message.move();
             }
             Console.Write("Good Bye!");
             Console.ReadKey();

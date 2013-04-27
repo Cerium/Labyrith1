@@ -1,79 +1,64 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Text;
+using System.Linq;
 
 namespace Labyrinth
 {
     public class Scoreboard
     {
-        void create()
+        public string Show(string fileName)
         {
-            FileInfo file = new FileInfo("scoreboard");
-            FileStream stream = file.Open(FileMode.OpenOrCreate, FileAccess.Read);
-            stream.Close();
-        }
-        public void Show()
-        {
-            create();
-            FileInfo file = new FileInfo("scoreboard");
-            StreamReader fileReader = file.OpenText();
-            string line = null;
-            bool isEmpty = true;
-            int i = 0;
-            while ((line = fileReader.ReadLine()) != null)
-            {
-                isEmpty = false;
-                string[] nameAndScore = line.Split();
-                Console.WriteLine("{0}: {1}->{2}", ++i,nameAndScore[0], nameAndScore[1] );
-            }
+            var players = new List<Player>();
+            ReadScores(fileName, players);
 
-            if (isEmpty) Console.WriteLine("Scoreboard is empty.");
-            fileReader.Close();
+            var sb = new StringBuilder();
+            int count = 0;
+            players.ForEach(p =>
+                {
+                    sb.AppendFormat("{0}: {1} -> {2}" + Environment.NewLine, ++count, p.Name, p.Points);
+                });
+           
+            return sb.ToString();
         }
         
-        public void Add(string name, int score)
+        public void Add(string fileName, Player player)
         {
-            create(); 
-            
-            FileInfo file = new FileInfo("scoreboard");
-            StreamReader fileReader = file.OpenText();
-            String line=null;
-            int index = 0;
-            int[] scores = new int[5];
-            string[] names = new string[5];
-            while ((line = fileReader.ReadLine()) != null)
+            var players = new List<Player>();
+
+            ReadScores(fileName, players);
+
+            players.Add(new Player()
             {
-                string[] nameAndScore = line.Split();
-                scores[index] = Int32.Parse(nameAndScore[1]);
-                names[index++] = nameAndScore[0];
-            }
-            if (index < 5)
+                Name = player.Name,
+                Points = player.Points
+            });
+
+            using (var writer = new StreamWriter(fileName))
             {
-                scores[index] = score;
-                names[index] = name;
-            }
-            else
-                if (score < scores[index - 1])
-                {
-                    scores[index - 1] = score;
-                    names[index - 1] = name;
-                }
-            if (index == 5) index = 4;
-            for (int i = 0; i <= index-1; i++)
-                for(int j=i+1;j<=index;j++)
-                    if (scores[i] > scores[j])
+                players.OrderBy(p => p.Points).Take(5).ToList().ForEach(p =>
                     {
-                        int swapValue = scores[i];
-                        scores[i] = scores[j];
-                        scores[j] = swapValue;
-                        string swapValueString = names[i];
-                        names[i] = names[j];
-                        names[j] = swapValueString;
-                    }
-            fileReader.Close();
-            StreamWriter fileWriter = file.CreateText();
-            for(int i=0;i<=index;i++)
-                fileWriter.WriteLine("{0} {1}", names[i], scores[i],i+1);
-            fileWriter.Close();
+                        writer.WriteLine("{0} {1}", p.Name, p.Points);
+                    });
+            }
+        }
+
+        private static void ReadScores(string fileName, List<Player> players)
+        {
+            using (var reader = new StreamReader(fileName))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    var nameAndPoints = line.Split();
+                    players.Add(new Player()
+                        {
+                            Name = nameAndPoints[0],
+                            Points = Int32.Parse(nameAndPoints[1])
+                        });
+                }
+            }
         }
     }
 }

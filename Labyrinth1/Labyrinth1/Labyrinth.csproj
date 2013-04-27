@@ -41,9 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration.cs" />
     <Compile Include="Direction.cs" />
+    <Compile Include="Helpers.cs" />
     <Compile Include="LabyrinthProgram.cs" />
     <Compile Include="Message.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Playfield.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
