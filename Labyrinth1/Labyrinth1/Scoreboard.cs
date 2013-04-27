@@ -14,7 +14,7 @@ namespace Labyrinth
             ReadScores(fileName, players);
 
             var sb = new StringBuilder();
-            int count = 0;
+            var count = 0;
             players.ForEach(p =>
                 {
                     sb.AppendFormat("{0}: {1} -> {2}" + Environment.NewLine, ++count, p.Name, p.Points);
@@ -26,11 +26,10 @@ namespace Labyrinth
         public void Add(string fileName, Player player)
         {
             var players = new List<Player>();
-
             ReadScores(fileName, players);
 
-            players.Add(new Player()
-            {
+            players.Add(new Player
+                {
                 Name = player.Name,
                 Points = player.Points
             });
@@ -44,7 +43,7 @@ namespace Labyrinth
             }
         }
 
-        private static void ReadScores(string fileName, List<Player> players)
+        private static void ReadScores(string fileName, ICollection<Player> players)
         {
             using (var reader = new StreamReader(fileName))
             {
@@ -52,7 +51,7 @@ namespace Labyrinth
                 while ((line = reader.ReadLine()) != null)
                 {
                     var nameAndPoints = line.Split();
-                    players.Add(new Player()
+                    players.Add(new Player
                         {
                             Name = nameAndPoints[0],
                             Points = Int32.Parse(nameAndPoints[1])
