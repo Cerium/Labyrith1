@@ -4,12 +4,12 @@ namespace Labyrinth
 {
     public class Message
     {
-        public void printingInvalidMoveMessage()
+        public void PrintingInvalidMoveMessage()
         {
             Console.WriteLine("* Invalid move!");
         }
 
-        public void PrintingMoveMessage()
+        public void PrintingMessageOfAlloudMovements()
         {
             Console.Write("Enter your move (L=left, R=right, U=up, D=down): ");
         }

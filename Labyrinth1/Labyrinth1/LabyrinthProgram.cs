@@ -27,7 +27,7 @@ namespace Labyrinth
             NewGame();
             scores=new Scoreboard();
             String input = "";
-            message.PrintingMoveMessage();
+            message.PrintingMessageOfAlloudMovements();
             while ((input = Console.ReadLine()) != "exit")
             {
                 switch (input)
@@ -40,7 +40,7 @@ namespace Labyrinth
                         break;
                     case "L":
 
-                        if (!playfield.move(Direction.Left)) message.printingInvalidMoveMessage();
+                        if (!playfield.move(Direction.Left)) message.PrintingInvalidMoveMessage();
                         else
                         {
                             moves++;
@@ -50,7 +50,7 @@ namespace Labyrinth
                         break;
                     case "U":
 
-                        if (!playfield.move(Direction.Up)) message.printingInvalidMoveMessage();
+                        if (!playfield.move(Direction.Up)) message.PrintingInvalidMoveMessage();
                         else
                         {
                             moves++;
@@ -60,7 +60,7 @@ namespace Labyrinth
                         break;
                     case "R":
 
-                        if (!playfield.move(Direction.Right)) message.printingInvalidMoveMessage();
+                        if (!playfield.move(Direction.Right)) message.PrintingInvalidMoveMessage();
                         else
                         {
                             moves++;
@@ -70,7 +70,7 @@ namespace Labyrinth
                         break;
                     case "D":
 
-                        if (!playfield.move(Direction.Down)) message.printingInvalidMoveMessage();
+                        if (!playfield.move(Direction.Down)) message.PrintingInvalidMoveMessage();
                         else
                         {
                             moves++;
@@ -80,7 +80,7 @@ namespace Labyrinth
                         break;
                     default:
                         {
-                            message.printingInvalidMoveMessage(); 
+                            message.PrintingInvalidMoveMessage(); 
                             break;
                         }
 
@@ -100,7 +100,7 @@ namespace Labyrinth
                     message.PrintingNewLine();
                     NewGame();
                 }
-                message.PrintingMoveMessage();
+                message.PrintingMessageOfAlloudMovements();
             }
             Console.Write("Good Bye!");
             Console.ReadKey();
