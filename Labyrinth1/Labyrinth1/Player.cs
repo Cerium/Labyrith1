@@ -8,6 +8,19 @@ namespace Labyrinth
 {
     public class Player
     {
+        private Position position;
+        public Position Position
+        {
+            get 
+            {
+                return this.position;
+            }
+            set
+            {
+                this.position = value;
+            }
+        }
+
         private string name = string.Empty;
         public string Name
         {
@@ -32,6 +45,38 @@ namespace Labyrinth
             {
                 this.points = value;
             }
+        }
+
+        public Player(Position position)
+        {
+            this.Position = position;
+        }
+
+        public bool move(Direction direction)
+        {
+            if (isValidMove(player, direction))
+            {
+                if (isWinning()) return false;
+                switch (direction)
+                {
+                    case Direction.Left:
+                        this.Position.X -= 1;
+                        break;
+                    case Direction.Up:
+                        this.Position.Y -= 1;
+                        break;
+                    case Direction.Right:
+                        this.Position.X += 1;
+                        break;
+                    case Direction.Down:
+                        this.Position.Y += 1;
+                        break;
+                    default:
+                        return false;
+                }
+            }
+            else return false;
+            return true;
         }
     }
 }

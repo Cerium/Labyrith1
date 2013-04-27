@@ -12,30 +12,21 @@ namespace Labyrinth
             labyrinth = new int[fieldSize,fieldSize];
         }
 
-        public bool isWinning()
-        {
-            return player.isWinning();
-        }
-        public bool move(Direction direction)
-        {
-            if (isValidMove(player, direction))
-                player.move(direction);
-            else return false;
-            return true;
-        }
+        
+       
 
         bool isValidPosition(Position position)
         {
-            return labyrinth[position.X, position.Y] == 0 && position.isValidPosition();
+            return labyrinth[position.X, position.Y] == 0 && isValidPosition();
         }
 
-        bool isValidMove(Position position, Direction direction)
+        bool isValidMove(Player player, Direction direction)
         {
-            if (position.isWinning()) return false;
+            if (isWinning()) return false;
 
-            Position newPosition = new Position(position.X, position.Y);
+            Position newPosition = new Position(player.Position.X, player.Position.Y);
 
-            newPosition.move(direction);
+            player.move(direction);
 
             return isValidPosition(newPosition);
         }
@@ -44,23 +35,24 @@ namespace Labyrinth
         {
             return labyrinth[position.X, position.Y] == -1;
         }
-        bool isBlankMove(Position position, Direction direction)
+
+        bool isBlankMove(Player player, Direction direction)
         {
-            Position newPosition = new Position(position.X, position.Y);
-            newPosition.move(direction);
+            Position newPosition = new Position(player.Position.X, player.Position.Y);
+            player.move(direction);
             bool isBlankPos = isBlankPosition(newPosition);
 
             return isBlankPos;
         }
 
 
-        public void RenderGameField()
+        public void RenderGameField(Player player)
         {
             for (int temp2 = 0; temp2 < 7; temp2++)
             {
                 for (int temp1 = 0; temp1 < 7; temp1++)
                 {
-                    if (player.X == temp1 && player.Y == temp2)
+                    if (player.Position.X == temp1 && player.Position.Y == temp2)
                     {
                         Console.Write("*");
                     }
@@ -84,21 +76,22 @@ namespace Labyrinth
         }
         public void CreateGameField()
         {
-            player = new Position();
+            int gameFieldLenght = labyrinth.GetLength(0);
 
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < gameFieldLenght; i++)
             {
-                for (int j = 0; j < 7; j++)
+                for (int j = 0; j < gameFieldLenght; j++)
                 {
                     labyrinth[i, j] = -1;
                 }
             }
 
-            labyrinth[Position.DefaultStartPositionX, Position.DefaultStartPositionY] = 0;
+            labyrinth[gameFieldLenght / 2, gameFieldLenght / 2] = 0;
+
             Direction currentDirection = Direction.Blank;            
-            Position currentPosition = new Position();
+            Position currentPosition = new Position(gameFieldLenght / 2, gameFieldLenght / 2);
             Random directionGenerator = new Random();
-            while (!currentPosition.isWinning())
+            while (!isWinning())
             {
                 do
                 {
@@ -106,12 +99,12 @@ namespace Labyrinth
                     currentDirection = (Direction)(nextDirection);
                 } while (!isBlankMove(currentPosition, currentDirection));
 
-                currentPosition.move(currentDirection);
+                move(currentDirection);
                 labyrinth[currentPosition.X, currentPosition.Y] = 0;
             }
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < gameFieldLenght; i++)
             {
-                for (int j = 0; j < 7; j++)
+                for (int j = 0; j < gameFieldLenght; j++)
                 {
                     if (labyrinth[i, j] == -1)
                     {
@@ -123,5 +116,32 @@ namespace Labyrinth
             }
         }
 
+        
+       
+        public bool isWinning()
+        {
+            bool resault;
+            resault = false;
+            if (X == 0 || X == 6 || Y == 0 || Y == 6)
+                resault = true;
+            return resault;
+        }
+
+
+
+        public bool isValidPosition()
+        {
+
+
+
+            if (X <= 6 && X >= 0 && Y >= 0 && Y <= 6) return true;
+            else return false;
+        }
+
+        public void makeStarting()
+        {
+            this.X = 3;
+            this.Y = 3;
+        }
     }
 }

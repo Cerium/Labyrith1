@@ -8,15 +8,16 @@ namespace Labyrinth
         readonly static Playfield playfield = new Playfield(Configuration.GAME_FIELD_SIZE);
         readonly static Message message = new Message();
         private static Scoreboard scores;
-        private static Player player = new Player();
+        private static Player player;
 
         public static void NewGame()
         {
             message.IntroOfLabyrinthGame();
             playfield.CreateGameField();
             message.NewLine();
-            playfield.RenderGameField();
-            player = new Player();
+            Position playerInitioalPos = new Position(3, 3);
+            player = new Player(playerInitioalPos);
+            playfield.RenderGameField(player);            
         }
 
         public static void Main(string[] args)
@@ -44,7 +45,7 @@ namespace Labyrinth
                         else
                         {
                             player.Points++;
-                            playfield.RenderGameField();
+                            playfield.RenderGameField(player);
                         }
                         break;
                     case "U":
@@ -55,7 +56,7 @@ namespace Labyrinth
                         else
                         {
                             player.Points++;
-                            playfield.RenderGameField();
+                            playfield.RenderGameField(player);
                         }
                         break;
                     case "R":
@@ -66,7 +67,7 @@ namespace Labyrinth
                         else
                         {
                             player.Points++;
-                            playfield.RenderGameField();
+                            playfield.RenderGameField(player);
                         }
                         break;
                     case "D":
@@ -77,7 +78,7 @@ namespace Labyrinth
                         else
                         {
                             player.Points++;
-                            playfield.RenderGameField();
+                            playfield.RenderGameField(player);
                         }
                         break;
                     default:
