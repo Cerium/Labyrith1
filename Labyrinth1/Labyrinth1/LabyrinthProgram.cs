@@ -1,16 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Labyrinth
 {
     public class LabyrinthProgram
     {
-        static Playfield playfield = new Playfield();
-        static Message message = new Message();
-        static Scoreboard scores;
-        static Player player = new Player();
+        readonly static Playfield playfield = new Playfield();
+        readonly static Message message = new Message();
+        private static Scoreboard scores;
+        private static Player player = new Player();
 
         public static void NewGame()
         {
@@ -24,10 +22,10 @@ namespace Labyrinth
         public static void Main(string[] args)
         {
             NewGame();
-            scores=new Scoreboard();
-            String input = "";
+            scores = new Scoreboard();
             message.PrintAlloudMoves();
-            while ((input = Console.ReadLine()) != "exit")
+            string input = Console.ReadLine();
+            while (input != "exit")
             {
                 switch (input)
                 {
@@ -38,52 +36,60 @@ namespace Labyrinth
                         NewGame();
                         break;
                     case "L":
-
-                        if (!playfield.move(Direction.Left)) message.PrintInvalidMoveMessage();
+                        if (!playfield.move(Direction.Left))
+                        {
+                            message.PrintInvalidMoveMessage();
+                        }
                         else
                         {
                             player.Points++;
                             playfield.print();
                         }
-                        
+
                         break;
                     case "U":
-
-                        if (!playfield.move(Direction.Up)) message.PrintInvalidMoveMessage();
+                        if (!playfield.move(Direction.Up))
+                        {
+                            message.PrintInvalidMoveMessage();
+                        }
                         else
                         {
                             player.Points++;
                             playfield.print();
                         }
-                        
+
                         break;
                     case "R":
-
-                        if (!playfield.move(Direction.Right)) message.PrintInvalidMoveMessage();
+                        if (!playfield.move(Direction.Right))
+                        {
+                            message.PrintInvalidMoveMessage();
+                        }
                         else
                         {
                             player.Points++;
                             playfield.print();
                         }
-                        
+
                         break;
                     case "D":
-
-                        if (!playfield.move(Direction.Down)) message.PrintInvalidMoveMessage();
+                        if (!playfield.move(Direction.Down))
+                        {
+                            message.PrintInvalidMoveMessage();
+                        }
                         else
                         {
                             player.Points++;
                             playfield.print();
                         }
-                        
+
                         break;
                     default:
                         {
-                            message.PrintInvalidMoveMessage(); 
+                            message.PrintInvalidMoveMessage();
                             break;
                         }
-
                 }
+
                 if (playfield.isWinning())
                 {
                     message.PrintWonMessage(player.Points);
@@ -92,8 +98,10 @@ namespace Labyrinth
                     message.NewLine();
                     NewGame();
                 }
+
                 message.PrintAlloudMoves();
             }
+
             Console.Write("Good Bye!");
             Console.ReadKey();
         }
