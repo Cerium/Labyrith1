@@ -34,17 +34,24 @@ namespace Labyrinth
                 Points = player.Points
             });
 
+            CreateFile(fileName, players);
+        }
+
+        private static void CreateFile(string fileName, IEnumerable<Player> players)
+        {
             using (var writer = new StreamWriter(fileName))
             {
-                players.OrderBy(p => p.Points).Take(5).ToList().ForEach(p =>
-                    {
-                        writer.WriteLine("{0} {1}", p.Name, p.Points);
-                    });
+                players.OrderBy(p => p.Points).Take(5).ToList().ForEach(p => { writer.WriteLine("{0} {1}", p.Name, p.Points); });
             }
         }
 
         private static void ReadScores(string fileName, ICollection<Player> players)
         {
+            if (!File.Exists(fileName))
+            {
+                CreateFile(fileName, players);
+            }
+
             using (var reader = new StreamReader(fileName))
             {
                 string line;
