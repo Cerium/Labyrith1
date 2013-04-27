@@ -41,11 +41,11 @@ namespace Labyrinth
         {
             get
             {
-                return this.position;
+                return new Position(position.X, position.Y);
             }
-            set
+            protected set
             {
-                this.position = value;
+                this.position = new Position(value.X, value.Y);
             }
         }
 
