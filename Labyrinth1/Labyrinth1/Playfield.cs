@@ -27,14 +27,14 @@ namespace Labyrinth
 
 
 
-            return labyrinth[position.x, position.y] == 0 && position.isValidPosition();
+            return labyrinth[position.X, position.Y] == 0 && position.isValidPosition();
         }
 
         bool isValidMove(Position position, Direction direction)
         {
             if (position.isWinning()) return false;
 
-            Position newPosition = new Position(position.x, position.y);
+            Position newPosition = new Position(position.X, position.Y);
 
             newPosition.move(direction);
 
@@ -43,11 +43,11 @@ namespace Labyrinth
 
         bool isBlankPosition(Position position)
         {
-            return labyrinth[position.x, position.y] == -1;
+            return labyrinth[position.X, position.Y] == -1;
         }
         bool isBlankMove(Position position, Direction direction)
         {
-            Position newPosition = new Position(position.x, position.y);
+            Position newPosition = new Position(position.X, position.Y);
 
 
 
@@ -65,7 +65,7 @@ namespace Labyrinth
 
                 for (int temp1 = 0; temp1 < 7; temp1++)
                 {
-                    if (player.x == temp1 && player.y == temp2) Console.Write("*");
+                    if (player.X == temp1 && player.Y == temp2) Console.Write("*");
                     else
                     {
                         if (labyrinth[temp1, temp2] == 0) Console.Write("-");
@@ -114,7 +114,7 @@ namespace Labyrinth
 
                 tempPos2.move(d);
 
-                labyrinth[tempPos2.x, tempPos2.y] = 0;
+                labyrinth[tempPos2.X, tempPos2.Y] = 0;
             }
             for (int i = 0; i < 7; i++)
             {
