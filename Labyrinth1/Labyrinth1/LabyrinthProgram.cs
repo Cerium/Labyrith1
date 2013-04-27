@@ -38,7 +38,7 @@ namespace Labyrinth
                         NewGame();
                         break;
                     case "L":
-                        if (!playfield.move(Direction.Left))
+                        if (!player.Move(Direction.Left, Configuration.GAME_FIELD_SIZE))
                         {
                             message.PrintInvalidMoveMessage();
                         }
@@ -49,7 +49,7 @@ namespace Labyrinth
                         }
                         break;
                     case "U":
-                        if (!playfield.move(Direction.Up))
+                        if (!player.Move(Direction.Up, Configuration.GAME_FIELD_SIZE))
                         {
                             message.PrintInvalidMoveMessage();
                         }
@@ -60,7 +60,7 @@ namespace Labyrinth
                         }
                         break;
                     case "R":
-                        if (!playfield.move(Direction.Right))
+                        if (!player.Move(Direction.Right, Configuration.GAME_FIELD_SIZE))
                         {
                             message.PrintInvalidMoveMessage();
                         }
@@ -71,7 +71,7 @@ namespace Labyrinth
                         }
                         break;
                     case "D":
-                        if (!playfield.move(Direction.Down))
+                        if (!player.Move(Direction.Down, Configuration.GAME_FIELD_SIZE))
                         {
                             message.PrintInvalidMoveMessage();
                         }
@@ -88,7 +88,7 @@ namespace Labyrinth
                         }
                 }
 
-                if (playfield.isWinning())
+                if (player.Position.IsWinning(Configuration.GAME_FIELD_SIZE))
                 {
                     message.PrintWonMessage(player.Points);
                     player.Name = Console.ReadLine();

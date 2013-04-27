@@ -26,7 +26,7 @@ namespace Labyrinth
 
             Position newPosition = new Position(player.Position.X, player.Position.Y);
 
-            player.move(direction);
+            player.Move(direction);
 
             return isValidPosition(newPosition);
         }
@@ -39,7 +39,7 @@ namespace Labyrinth
         bool isBlankMove(Player player, Direction direction)
         {
             Position newPosition = new Position(player.Position.X, player.Position.Y);
-            player.move(direction);
+            player.Move(direction);
             bool isBlankPos = isBlankPosition(newPosition);
 
             return isBlankPos;
@@ -118,14 +118,7 @@ namespace Labyrinth
 
         
        
-        public bool isWinning()
-        {
-            bool resault;
-            resault = false;
-            if (X == 0 || X == 6 || Y == 0 || Y == 6)
-                resault = true;
-            return resault;
-        }
+       
 
 
 
