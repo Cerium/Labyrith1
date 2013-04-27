@@ -24,8 +24,8 @@ namespace Labyrinth
             NewGame();
             scores = new Scoreboard();
             message.PrintAlloudMoves();
-            string input = Console.ReadLine();
-            while (input != "exit")
+            string input = string.Empty;
+            while ((input = Console.ReadLine()) != "exit")
             {
                 switch (input)
                 {
