@@ -64,16 +64,16 @@ namespace Labyrinth
             switch (direction)
             {
                 case Direction.Left:
-                    this.Position.X -= 1;
+                    this.position.X -= 1;
                     break;
                 case Direction.Up:
-                    this.Position.Y -= 1;
+                    this.position.Y -= 1;
                     break;
                 case Direction.Right:
-                    this.Position.X += 1;
+                    this.position.X += 1;
                     break;
                 case Direction.Down:
-                    this.Position.Y += 1;
+                    this.position.Y += 1;
                     break;
                 default:
                     return false;
