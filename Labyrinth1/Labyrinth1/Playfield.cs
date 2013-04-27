@@ -48,13 +48,10 @@ namespace Labyrinth
         bool isBlankMove(Position position, Direction direction)
         {
             Position newPosition = new Position(position.x, position.y);
-
-
-
-
             newPosition.move(direction);
+            bool isBlankPos = isBlankPosition(newPosition);
 
-            return isBlankPosition(newPosition);
+            return isBlankPos;
         }
 
 
@@ -62,7 +59,6 @@ namespace Labyrinth
         {
             for (int temp2 = 0; temp2 < 7; temp2++)
             {
-
                 for (int temp1 = 0; temp1 < 7; temp1++)
                 {
                     if (player.x == temp1 && player.y == temp2) Console.Write("*");
@@ -77,8 +73,6 @@ namespace Labyrinth
 
 
                             {
-
-
                                 Console.Write("+");
                             }
                         }
