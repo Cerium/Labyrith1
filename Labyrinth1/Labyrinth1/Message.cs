@@ -6,7 +6,7 @@ namespace Labyrinth
     {
         public void invalid()
         {
-            Console.WriteLine("* Invalid move!");
+            Console.WriteLine(" Invalid move!");
         }
 
         public void move()
