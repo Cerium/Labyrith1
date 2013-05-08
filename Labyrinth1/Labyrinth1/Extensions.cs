@@ -13,7 +13,10 @@
 
         public static bool IsWinning(this Position source, int fieldSize)
         {
-            if (source.X == 0 || source.X == fieldSize - 1 || source.Y == 0 || source.Y == fieldSize - 1)
+            if (source.X == 0 ||
+                source.X == fieldSize - 1 ||
+                source.Y == 0 ||
+                source.Y == fieldSize - 1)
             {
                 return true;
             }
