@@ -1,17 +1,65 @@
 ﻿namespace Labyrinth
 {
-    public struct Position
+    public class Position
     {
-        public int X { get; set; }
-        public int Y { get; set; }
-
-        public Position(int x, int y)
-            : this()
+        public int x;
+        public int y;
+        public Position()
         {
-            this.X = x;
-            this.Y = y;
+            this.x = 3;
+            this.y = 3;
+        }
+        public Position(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+        public bool move(Direction direction)
+        {
+            if (isWinning()) return false;
+            switch (direction)
+            {
+                case Direction.Left:
+                    this.x -= 1;
+                    break;
+                case Direction.Up:
+                    this.y -= 1;
+                    break;
+                case Direction.Right:
+                    this.x += 1;
+                    break;
+                case Direction.Down:
+                    this.y += 1;
+                    break;
+                default:
+                    return false;
+            }
+            return true;
+        }
+        public bool isWinning()
+        {
+            bool resault;
+            resault = false;
+            if (x == 0 || x == 6 || y == 0 || y == 6)
+                resault = true;
+            return resault;
         }
 
-        
+
+
+        public bool isValidPosition()
+        {
+
+
+
+            if (x <= 6 && x >= 0 && y >= 0 && y <= 6) return true;
+            else return false;
+        }
+
+        public void makeStarting()
+        {
+            this.x = 3;
+            this.y = 3;
+        }
     }
 }

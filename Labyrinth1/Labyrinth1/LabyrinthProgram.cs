@@ -5,106 +5,101 @@ namespace Labyrinth
 {
     public class LabyrinthProgram
     {
-        readonly static Playfield playfield = new Playfield(Configuration.GAME_FIELD_SIZE);
-        readonly static Message message = new Message();
-        private static Scoreboard scores;
-        private static Player player;
+        static Playfield playfield = new Playfield();
+        static Message message = new Message();
+        static Scoreboard scores;
+        static int moves = 0;
 
-        public static void NewGame()
+        static void newGame()
         {
-            message.IntroOfLabyrinthGame();
-
-            Position playerInitioalPos = new Position(Configuration.GAME_FIELD_SIZE / 2, Configuration.GAME_FIELD_SIZE / 2);
-
-            player = new Player(playerInitioalPos);
-            playfield.CreateGameField(player);
-
-            message.NewLine();
-
-            player = new Player(playerInitioalPos);
-            playfield.RenderGameField(player);            
+            message.intro();
+            playfield.reset();
+            message.nl();
+            playfield.print();
+            moves = 0;
         }
 
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
-            NewGame();
+
+            newGame();
             scores = new Scoreboard();
-            message.PrintAlloudMoves();
-            string input = string.Empty;
+            String input = "";
+            message.move();
             while ((input = Console.ReadLine()) != "exit")
             {
-                
                 switch (input)
                 {
                     case "top":
-                        Console.WriteLine(scores.Show(Configuration.FILE_NAME));
+                        scores.pokazvane();
                         break;
                     case "restart":
-                        NewGame();
+                        newGame();
                         break;
                     case "L":
-                        if (!player.Move(Direction.Left))
-                        {
-                            message.PrintInvalidMoveMessage();
-                        }
+
+                        if (!playfield.move(Direction.Left)) message.invalid();
                         else
                         {
-                            player.Points++;
-                            playfield.RenderGameField(player);
+                            moves++;
+                            playfield.print();
                         }
+
                         break;
                     case "U":
-                        if (!player.Move(Direction.Up))
-                        {
-                            message.PrintInvalidMoveMessage();
-                        }
+
+                        if (!playfield.move(Direction.Up)) message.invalid();
                         else
                         {
-                            player.Points++;
-                            playfield.RenderGameField(player);
+                            moves++;
+                            playfield.print();
                         }
+
                         break;
                     case "R":
-                        if (!player.Move(Direction.Right))
-                        {
-                            message.PrintInvalidMoveMessage();
-                        }
+
+                        if (!playfield.move(Direction.Right)) message.invalid();
                         else
                         {
-                            player.Points++;
-                            playfield.RenderGameField(player);
+                            moves++;
+                            playfield.print();
                         }
+
                         break;
                     case "D":
-                        if (!player.Move(Direction.Down))
-                        {
-                            message.PrintInvalidMoveMessage();
-                        }
+
+                        if (!playfield.move(Direction.Down)) message.invalid();
                         else
                         {
-                            player.Points++;
-                            playfield.RenderGameField(player);
+                            moves++;
+                            playfield.print();
                         }
+
                         break;
                     default:
                         {
-                            message.PrintInvalidMoveMessage();
+                            message.invalid();
                             break;
                         }
-                }
 
-                if (player.Position.IsWinning(Configuration.GAME_FIELD_SIZE))
+                }
+                if (playfield.isWinning())
                 {
-                    message.PrintWonMessage(player.Points);
-                    player.Name = Console.ReadLine();
-                    scores.Add(Configuration.FILE_NAME, player);
-                    message.NewLine();
-                    NewGame();
+                    message.win(moves);
+                    string name = Console.ReadLine();
+                    try
+                    {
+                        scores.add(name, moves);
+                    }
+                    finally
+                    {
+
+                    };
+                    message.nl();
+                    newGame();
                 }
-
-                message.PrintAlloudMoves();
+                message.move();
             }
-
             Console.Write("Good Bye!");
             Console.ReadKey();
         }
