@@ -4,8 +4,8 @@
     {
         public static bool IsValidPosition(this Position source, int fieldSize)
         {
-            if (source.X < fieldSize
-                && source.X >= 0 &&
+            if (source.X < fieldSize &&
+                source.X >= 0 &&
                 source.Y >= 0 &&
                 source.Y < fieldSize)
             {
