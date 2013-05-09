@@ -16,7 +16,7 @@ namespace Labyrinth
         static void newGame()
         {
             message.PrintIntro();
-            playfield.CreatePlayfield();
+            playfield.CreateLabyrinth();
             message.PintNewLine();
             renderer.print(playfield, player);
             moves = 0;

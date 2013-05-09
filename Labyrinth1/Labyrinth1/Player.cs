@@ -30,7 +30,7 @@ namespace Labyrinth
                 if (value.Row < 0 || value.Row >= Playfield.PlayfieldRows ||
                     value.Col < 0 || value.Col >= Playfield.PlayfieldCols)
                 {
-                    throw new ArgumentOutOfRangeException("Player must be inside the playfield!");
+                    throw new ArgumentOutOfRangeException("Player Position", "Player must be inside the playfield!");
                 }
 
                 this.position = new Position(value.Row, value.Col);
