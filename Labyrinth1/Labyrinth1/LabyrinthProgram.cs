@@ -5,6 +5,9 @@ namespace Labyrinth
 {
     public class LabyrinthProgram
     {
+        static ObjectRenderer renderer = new ObjectRenderer();
+        static Player player = new Player();
+
         static Playfield playfield = new Playfield();
         static Message message = new Message();
         static Scoreboard scores;
@@ -15,7 +18,7 @@ namespace Labyrinth
             message.PrintIntro();
             playfield.CreatePlayfield();
             message.PintNewLine();
-            playfield.print();
+            renderer.print(playfield, player);
             moves = 0;
         }
 
@@ -27,88 +30,91 @@ namespace Labyrinth
             message.PrintDirectionsMessage();
             while ((input = Console.ReadLine()) != "exit")
             {
-                switch (input)
-                {
-                    case "top":
-                        scores.pokazvane();
-                        break;
-                    case "restart":
-                        newGame();
-                        break;
-                    case "L":
+                //uncomment;
 
-                        if (!playfield.move(Direction.Left))
-                        {
-                            message.PrintInvalidMoveMessage();
-                        }
-                        else
-                        {
-                            moves++;
-                            playfield.print();
-                        }
+                //switch (input)
+                //{
+                //    case "top":
+                //        scores.pokazvane();
+                //        break;
+                //    case "restart":
+                //        newGame();
+                //        break;
+                //    case "L":
 
-                        break;
-                    case "U":
+                //        if (!playfield.Move(Direction.Left))
+                //        {
+                //            message.PrintInvalidMoveMessage();
+                //        }
+                //        else
+                //        {
+                //            moves++;
+                //            playfield.print();
+                //        }
 
-                        if (!playfield.move(Direction.Up))
-                        {
-                            message.PrintInvalidMoveMessage();
-                        }
-                        else
-                        {
-                            moves++;
-                            playfield.print();
-                        }
+                //        break;
+                //    case "U":
 
-                        break;
-                    case "R":
+                //        if (!playfield.Move(Direction.Up))
+                //        {
+                //            message.PrintInvalidMoveMessage();
+                //        }
+                //        else
+                //        {
+                //            moves++;
+                //            playfield.print();
+                //        }
 
-                        if (!playfield.move(Direction.Right))
-                        {
-                            message.PrintInvalidMoveMessage();
-                        }
-                        else
-                        {
-                            moves++;
-                            playfield.print();
-                        }
+                //        break;
+                //    case "R":
 
-                        break;
-                    case "D":
+                //        if (!playfield.Move(Direction.Right))
+                //        {
+                //            message.PrintInvalidMoveMessage();
+                //        }
+                //        else
+                //        {
+                //            moves++;
+                //            playfield.print();
+                //        }
 
-                        if (!playfield.move(Direction.Down))
-                        {
-                            message.PrintInvalidMoveMessage();
-                        }
-                        else
-                        {
-                            moves++;
-                            playfield.print();
-                        }
+                //        break;
+                //    case "D":
 
-                        break;
-                    default:
-                        {
-                            message.PrintInvalidMoveMessage();
-                            break;
-                        }
-                }
+                //        if (!playfield.Move(Direction.Down))
+                //        {
+                //            message.PrintInvalidMoveMessage();
+                //        }
+                //        else
+                //        {
+                //            moves++;
+                //            playfield.print();
+                //        }
 
-                if (playfield.isWinning())
-                {
-                    message.PrintWinningMessage(moves);
-                    string name = Console.ReadLine();
-                    try
-                    {
-                        scores.add(name, moves);
-                    }
-                    finally
-                    {
-                    };
+                //        break;
+                //    default:
+                //        {
+                //            message.PrintInvalidMoveMessage();
+                //            break;
+                //        }
+                //}
+                //uncomment;
 
-                    message.PintNewLine();
-                    newGame();
-                }
+                //if (playfield.isWinning())
+                //{
+                //    message.PrintWinningMessage(moves);
+                //    string name = Console.ReadLine();
+                //    try
+                //    {
+                //        scores.add(name, moves);
+                //    }
+                //    finally
+                //    {
+                //    };
+
+                //    message.PintNewLine();
+                //    newGame();
+                //}
 
                 message.PrintDirectionsMessage();
             }

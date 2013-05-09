@@ -18,45 +18,45 @@
             this.Col = col;
         }
 
-        public bool move(Direction direction)
-        {
-            if (HasWon())
-            {
-                return false;
-            }
+        //public bool Move(Direction direction)
+        //{
+        //    if (HasWon())
+        //    {
+        //        return false;
+        //    }
 
-            switch (direction)
-            {
-                case Direction.Left:
-                    this.Row -= 1;
-                    break;
-                case Direction.Up:
-                    this.Col -= 1;
-                    break;
-                case Direction.Right:
-                    this.Row += 1;
-                    break;
-                case Direction.Down:
-                    this.Col += 1;
-                    break;
-                default:
-                    return false;
-            }
+        //    switch (direction)
+        //    {
+        //        case Direction.Left:
+        //            this.Row -= 1;
+        //            break;
+        //        case Direction.Up:
+        //            this.Col -= 1;
+        //            break;
+        //        case Direction.Right:
+        //            this.Row += 1;
+        //            break;
+        //        case Direction.Down:
+        //            this.Col += 1;
+        //            break;
+        //        default:
+        //            return false;
+        //    }
 
-            return true;
-        }
+        //    return true;
+        //}
 
-        public bool HasWon()
-        {
-            bool resault;
-            resault = false;
-            if (Row == 0 || Row == 6 || Col == 0 || Col == 6)
-            {
-                resault = true;
-            }
+        //public bool HasWon()
+        //{
+        //    bool resault;
+        //    resault = false;
+        //    if (Row == 0 || Row == 6 || Col == 0 || Col == 6)
+        //    {
+        //        resault = true;
+        //    }
 
-            return resault;
-        }
+        //    return resault;
+        //}
 
         public bool isValidPosition()
         {
