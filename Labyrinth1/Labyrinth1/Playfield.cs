@@ -7,9 +7,10 @@ namespace Labyrinth
         int[,] labyrinth = new int[7, 7];
         Position player;
 
+        //think it is not neccessery
         public bool isWinning()
         {
-            return player.isWinning();
+            return player.HasWon();
         }
 
         public bool move(Direction direction)
@@ -27,7 +28,7 @@ namespace Labyrinth
 
         bool isValidMove(Position position, Direction direction)
         {
-            if (position.isWinning())
+            if (position.HasWon())
             {
                 return false;
             }
@@ -100,7 +101,7 @@ namespace Labyrinth
             Direction d = Direction.Blank;
             Random random = new Random();
             Position tempPos2 = new Position();
-            while (!tempPos2.isWinning())
+            while (!tempPos2.HasWon())
             {
                 do
                 {

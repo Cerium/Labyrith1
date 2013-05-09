@@ -19,7 +19,7 @@
 
         public bool move(Direction direction)
         {
-            if (isWinning())
+            if (HasWon())
             {
                 return false;
             }
@@ -45,7 +45,7 @@
             return true;
         }
 
-        public bool isWinning()
+        public bool HasWon()
         {
             bool resault;
             resault = false;
