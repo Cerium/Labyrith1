@@ -13,7 +13,7 @@ namespace Labyrinth
         static void newGame()
         {
             message.PrintIntro();
-            playfield.reset();
+            playfield.CreatePlayfield();
             message.PintNewLine();
             playfield.print();
             moves = 0;

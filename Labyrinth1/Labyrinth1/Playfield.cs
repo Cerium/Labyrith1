@@ -4,7 +4,17 @@ namespace Labyrinth
 {
     public class Playfield
     {
-        int[,] labyrinth = new int[7, 7];
+        public const int PlayfieldRows = 7;
+        public const int PlayfieldCols = 7;
+        private int[,] labyrinth;
+
+        //playfield constructor
+        public Playfield()
+        {
+            this.labyrinth = new int[PlayfieldRows, PlayfieldCols];
+        }
+
+        //should create class Player
         Position player;
 
         //think it is not neccessery
@@ -23,7 +33,7 @@ namespace Labyrinth
 
         bool isValidPosition(Position position)
         {
-            return labyrinth[position.x, position.y] == 0 && position.isValidPosition();
+            return labyrinth[position.Row, position.Col] == 0 && position.isValidPosition();
         }
 
         bool isValidMove(Position position, Direction direction)
@@ -33,24 +43,24 @@ namespace Labyrinth
                 return false;
             }
 
-            Position newPosition = new Position(position.x, position.y);
+            Position newPosition = new Position(position.Row, position.Col);
             newPosition.move(direction);
             return isValidPosition(newPosition);
         }
 
         bool isBlankPosition(Position position)
         {
-            return labyrinth[position.x, position.y] == -1;
+            return labyrinth[position.Row, position.Col] == -1;
         }
 
         bool isBlankMove(Position position, Direction direction)
         {
-            Position newPosition = new Position(position.x, position.y);
+            Position newPosition = new Position(position.Row, position.Col);
             newPosition.move(direction);
             return isBlankPosition(newPosition);
         }
 
-
+        // should create class Renderer and put this method there
         public void print()
         {
             for (int temp2 = 0; temp2 < 7; temp2++)
@@ -58,7 +68,7 @@ namespace Labyrinth
 
                 for (int temp1 = 0; temp1 < 7; temp1++)
                 {
-                    if (player.x == temp1 && player.y == temp2)
+                    if (player.Row == temp1 && player.Col == temp2)
                     {
                         Console.Write("*");
                     }
@@ -86,18 +96,19 @@ namespace Labyrinth
             }
         }
 
-        public void reset()
+        public void CreatePlayfield()
         {
-            player = new Position();
-            for (int i = 0; i < 7; i++)
+            Player player = new Player();
+            //player = new Position();//shouldn't be here
+            for (int i = 0; i < PlayfieldRows; i++)
             {
-                for (int j = 0; j < 7; j++)
+                for (int j = 0; j < PlayfieldCols; j++)
                 {
                     labyrinth[i, j] = -1;
                 }
             }
 
-            labyrinth[3, 3] = 0;
+            labyrinth[PlayfieldRows / 2, PlayfieldCols / 2] = 0;
             Direction d = Direction.Blank;
             Random random = new Random();
             Position tempPos2 = new Position();
@@ -110,12 +121,12 @@ namespace Labyrinth
                 } while (!isBlankMove(tempPos2, d));
 
                 tempPos2.move(d);
-                labyrinth[tempPos2.x, tempPos2.y] = 0;
+                labyrinth[tempPos2.Row, tempPos2.Col] = 0;
             }
 
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < PlayfieldRows; i++)
             {
-                for (int j = 0; j < 7; j++)
+                for (int j = 0; j < PlayfieldCols; j++)
                 {
                     if (labyrinth[i, j] == -1)
                     {

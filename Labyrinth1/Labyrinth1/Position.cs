@@ -1,20 +1,21 @@
 ﻿namespace Labyrinth
 {
-    public class Position
+    public struct Position
     {
-        public int x;
-        public int y;
+        public int Row { get; set; }
+        public int Col { get; set; }
 
-        public Position()
-        {
-            this.x = 3;
-            this.y = 3;
-        }
+        //public Position() : this()
+        //{
+        //    this.Row = 3;
+        //    this.Col = 3;
+        //}
 
-        public Position(int x, int y)
+        public Position(int row, int col)
+            : this()
         {
-            this.x = x;
-            this.y = y;
+            this.Row = row;
+            this.Col = col;
         }
 
         public bool move(Direction direction)
@@ -27,16 +28,16 @@
             switch (direction)
             {
                 case Direction.Left:
-                    this.x -= 1;
+                    this.Row -= 1;
                     break;
                 case Direction.Up:
-                    this.y -= 1;
+                    this.Col -= 1;
                     break;
                 case Direction.Right:
-                    this.x += 1;
+                    this.Row += 1;
                     break;
                 case Direction.Down:
-                    this.y += 1;
+                    this.Col += 1;
                     break;
                 default:
                     return false;
@@ -49,7 +50,7 @@
         {
             bool resault;
             resault = false;
-            if (x == 0 || x == 6 || y == 0 || y == 6)
+            if (Row == 0 || Row == 6 || Col == 0 || Col == 6)
             {
                 resault = true;
             }
@@ -59,7 +60,7 @@
 
         public bool isValidPosition()
         {
-            if (x <= 6 && x >= 0 && y >= 0 && y <= 6)
+            if (Row <= 6 && Row >= 0 && Col >= 0 && Col <= 6)
             {
                 return true;
             }
@@ -71,8 +72,8 @@
 
         public void makeStarting()
         {
-            this.x = 3;
-            this.y = 3;
+            this.Row = 3;
+            this.Col = 3;
         }
     }
 }
