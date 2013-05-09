@@ -19,18 +19,33 @@ namespace Labyrinth
         {
             get
             {
-                return this.labyrinth;
+                return new int[labyrinth.GetLength(0), labyrinth.GetLength(1)];
+            }
+
+            set
+            {
+                if (value.GetLength(0) != PlayfieldRows || value.GetLength(1) != PlayfieldCols)
+                {
+                    throw new ArgumentOutOfRangeException("Labyrinth", "Incorrect playfield size!");
+                }
+
+                this.labyrinth = new int[value.GetLength(0), value.GetLength(1)];
             }
         }
-        //should create class Player
-        //Position player;
 
-        //think it is not neccessery
-        //public bool isWinning()
-        //{
-        //    return player.HasWon();
-        //}
+        public int[,] GetImage()
+        {
+            int[,] image = new int[PlayfieldRows, PlayfieldCols];
+            for (int i = 0; i < PlayfieldRows; i++)
+            {
+                for (int j = 0; j < PlayfieldCols; j++)
+                {
+                    image[i, j] = labyrinth[i, j];
+                }
+            }
 
+            return image;
+        }
         //uncomment;
 
         //public bool Move(Direction direction)
@@ -59,14 +74,7 @@ namespace Labyrinth
         //    newPosition.Move(direction);
         //    return isValidPosition(newPosition);
         //}
-
-        //uncomment;
-
-        //bool isBlankPosition(Position position)
-        //{
-        //    return labyrinth[position.Row, position.Col] == -1;
-        //}
-
+     
         private bool IsVisitedPosition(Player player, Direction direction)
         {
             Position pos = new Position(player.GetPosition.Row, player.GetPosition.Col);
@@ -79,47 +87,10 @@ namespace Labyrinth
 
             return false;
         }
-
-        // should create class Renderer and put this method there
-        //public void print()
-        //{
-        //    for (int temp2 = 0; temp2 < 7; temp2++)
-        //    {
-
-        //        for (int temp1 = 0; temp1 < 7; temp1++)
-        //        {
-        //            if (player.Row == temp1 && player.Col == temp2)
-        //            {
-        //                Console.Write("*");
-        //            }
-        //            else
-        //            {
-        //                if (labyrinth[temp1, temp2] == 0)
-        //                {
-        //                    Console.Write("-");
-        //                }
-        //                else
-        //                {
-        //                    if (labyrinth[temp1, temp2] == 1)
-        //                    {
-        //                        Console.Write("X");
-        //                    }
-        //                    else
-        //                    {
-        //                        Console.Write("+");
-        //                    }
-        //                }
-        //            }
-        //        }
-
-        //        Console.WriteLine();
-        //    }
-        //}
-
-        public void CreatePlayfield()
+       
+        public void CreateLabyrinth()
         {
-            Player player = new Player();
-            //player = new Position();//shouldn't be here
+            Player player = new Player();            
             for (int i = 0; i < PlayfieldRows; i++)
             {
                 for (int j = 0; j < PlayfieldCols; j++)
