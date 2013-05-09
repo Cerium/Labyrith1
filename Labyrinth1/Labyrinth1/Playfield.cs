@@ -19,7 +19,7 @@ namespace Labyrinth
         {
             get
             {
-                return new int[labyrinth.GetLength(0), labyrinth.GetLength(1)];
+                return this.labyrinth;
             }
 
             set
@@ -90,7 +90,7 @@ namespace Labyrinth
        
         public void CreateLabyrinth()
         {
-            Player player = new Player();            
+            Player bot = new Player();            
             for (int i = 0; i < PlayfieldRows; i++)
             {
                 for (int j = 0; j < PlayfieldCols; j++)
@@ -100,20 +100,20 @@ namespace Labyrinth
             }
 
             //create way out
-            labyrinth[player.GetPosition.Row, player.GetPosition.Col] = 0;
+            labyrinth[bot.GetPosition.Row, bot.GetPosition.Col] = 0;
             Direction direction = Direction.Blank;
             Random random = new Random();
             //Position tempPos2 = new Position();
-            while (!player.HasWon())
+            while (!bot.HasWon())
             {
                 do
                 {
                     int randomNumber = random.Next() % 4;
                     direction = (Direction)(randomNumber);
-                } while (!IsVisitedPosition(player, direction));
+                } while (!IsVisitedPosition(bot, direction));
 
-                player.Move(direction);
-                labyrinth[player.GetPosition.Row, player.GetPosition.Col] = 0;
+                bot.Move(direction);
+                labyrinth[bot.GetPosition.Row, bot.GetPosition.Col] = 0;
             }
 
             for (int i = 0; i < PlayfieldRows; i++)

@@ -10,8 +10,7 @@ namespace Labyrinth
 
         public Player()
         {
-            this.position.Row = PlayerRow;
-            this.position.Col = PlayerCol;
+            this.position = new Position(PlayerRow, PlayerCol);     
         }
 
         public Player(Position position)
@@ -23,8 +22,9 @@ namespace Labyrinth
         {
             get
             {
-                return new Position(position.Row, position.Col);
+                return new Position(this.position.Row, this.position.Col);
             }
+
             private set
             {
                 if (value.Row < 0 || value.Row >= Playfield.PlayfieldRows ||
@@ -55,16 +55,16 @@ namespace Labyrinth
             switch (direction)
             {
                 case Direction.Left:
-                    this.position.Row -= 1;
-                    break;
-                case Direction.Up:
                     this.position.Col -= 1;
                     break;
+                case Direction.Up:
+                    this.position.Row -= 1;
+                    break;
                 case Direction.Right:
-                    this.position.Row += 1;
+                    this.position.Col += 1;
                     break;
                 case Direction.Down:
-                    this.position.Col += 1;
+                    this.position.Row += 1;
                     break;             
             }
         }

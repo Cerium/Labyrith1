@@ -8,26 +8,26 @@ namespace Labyrinth
 {
     public class ObjectRenderer
     {
-        public void print(Playfield playfield, Player player)
+        public void Render(Playfield playfield, Player player)
         {
-            for (int temp2 = 0; temp2 < 7; temp2++)
+            for (int Row = 0; Row < 7; Row++)
             {
 
-                for (int temp1 = 0; temp1 < 7; temp1++)
+                for (int Col = 0; Col < 7; Col++)
                 {
-                    if (player.GetPosition.Row == temp1 && player.GetPosition.Col == temp2)
+                    if (player.GetPosition.Row == Row && player.GetPosition.Col == Col)
                     {
                         Console.Write("*");
                     }
                     else
                     {
-                        if (playfield.Labyrinth[temp1, temp2] == 0)
+                        if (playfield.Labyrinth[Row, Col] == 0)
                         {
                             Console.Write("-");
                         }
                         else
                         {
-                            if (playfield.Labyrinth[temp1, temp2] == 1)
+                            if (playfield.Labyrinth[Row, Col] == 1)
                             {
                                 Console.Write("X");
                             }
