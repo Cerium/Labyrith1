@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Labyrinth.Tests
 {
     [TestClass]
-    public class PlayerTset
+    public class PlayerTest
     {
         [TestMethod]
         public void ConstructorTest()
