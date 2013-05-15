@@ -10,31 +10,24 @@ namespace Labyrinth
     {
         public void Render(Playfield playfield, Player player)
         {
-            for (int Row = 0; Row < 7; Row++)
+            for (int row = 0; row < 7; row++)
             {
 
-                for (int Col = 0; Col < 7; Col++)
+                for (int col = 0; col < 7; col++)
                 {
-                    if (player.GetPosition.Row == Row && player.GetPosition.Col == Col)
+                    if (player.GetPosition.Row == row && player.GetPosition.Col == col)
                     {
                         Console.Write("*");
                     }
                     else
                     {
-                        if (playfield.Labyrinth[Row, Col] == 0)
+                        if (playfield.Labyrinth[row, col] == 0)
                         {
                             Console.Write("-");
                         }
                         else
-                        {
-                            if (playfield.Labyrinth[Row, Col] == 1)
-                            {
-                                Console.Write("X");
-                            }
-                            else
-                            {
-                                Console.Write("+");
-                            }
+                        {                            
+                            Console.Write("X");                                                       
                         }
                     }
                 }

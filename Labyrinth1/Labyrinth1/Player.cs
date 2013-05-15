@@ -37,6 +37,11 @@ namespace Labyrinth
             }
         }
 
+        public void RestartDefaultPosition()
+        {
+            this.position = new Position(PlayerRow, PlayerCol);
+        }
+
         public bool HasWon()
         {
             bool resault;
@@ -68,5 +73,6 @@ namespace Labyrinth
                     break;             
             }
         }
+        
     }
 }

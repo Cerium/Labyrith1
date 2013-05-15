@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Direction.cs" />
+    <Compile Include="Engine.cs" />
     <Compile Include="LabyrinthProgram.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="ObjectRenderer.cs" />
