@@ -8,6 +8,20 @@ namespace Labyrinth
         public const int PlayerCol = 3;
         private Position position;
 
+        private string name = string.Empty;
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+
+        private int points = 0;
+        public int Points
+        {
+            get { return points; }
+            set { points = value; }
+        }
+
         public Player()
         {
             this.position = new Position(PlayerRow, PlayerCol);     
@@ -36,6 +50,9 @@ namespace Labyrinth
                 this.position = new Position(value.Row, value.Col);
             }
         }
+
+        
+
 
         public void RestartDefaultPosition()
         {
@@ -72,6 +89,7 @@ namespace Labyrinth
                     this.position.Row += 1;
                     break;             
             }
+            this.Points++;
         }
         
     }

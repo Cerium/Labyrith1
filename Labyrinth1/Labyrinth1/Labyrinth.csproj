@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuration.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="LabyrinthProgram.cs" />

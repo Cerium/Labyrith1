@@ -8,86 +8,63 @@ namespace Labyrinth
 {
     public class Scoreboard
     {
-        void create()
+        public string Show(string fileName)
         {
-            FileInfo file = new FileInfo("scoreboard");
-            FileStream stream = file.Open(FileMode.OpenOrCreate, FileAccess.Read);
-            stream.Close();
+            var players = new List<Player>();
+            ReadScores(fileName, players);
+
+            var sb = new StringBuilder();
+            var count = 0;
+            players.ForEach(p =>
+            {
+                sb.AppendFormat("{0}: {1} -> {2}" + Environment.NewLine, ++count, p.Name, p.Points);
+            });
+
+            return sb.ToString();
         }
 
-        public void pokazvane()
+        public void Add(string fileName, Player player)
         {
-            create();
-            FileInfo file = new FileInfo("scoreboard");
-            StreamReader fileReader = file.OpenText();
-            string line = null;
-            bool isEmpty = true;
-            int i = 0;
-            while ((line = fileReader.ReadLine()) != null)
-            {
-                isEmpty = false;
-                string[] nameAndScore = line.Split();
-                Console.WriteLine("{0}: {1}->{2}", ++i, nameAndScore[0], nameAndScore[1]);
-            }
+            var players = new List<Player>();
+            ReadScores(fileName, players);
 
-            if (isEmpty)
+            players.Add(new Player(new Position(Configuration.GAME_FIELD_SIZE / 2, Configuration.GAME_FIELD_SIZE / 2))
             {
-                Console.WriteLine("Scoreboard is empty.");
-            }
+                Name = player.Name,
+                Points = player.Points
+            });
 
-            fileReader.Close();
+            CreateFile(fileName, players);
         }
 
-        public void add(string name, int score)
+        private static void CreateFile(string fileName, IEnumerable<Player> players)
         {
-            create();
-            FileInfo file = new FileInfo("scoreboard");
-            StreamReader fileReader = file.OpenText();
-            String line = null;
-            int index = 0;
-            int[] scores = new int[5];
-            string[] names = new string[5];
-            while ((line = fileReader.ReadLine()) != null)
+            using (var writer = new StreamWriter(fileName))
             {
-                string[] nameAndScore = line.Split();
-                scores[index] = Int32.Parse(nameAndScore[1]);
-                names[index++] = nameAndScore[0];
+                players.OrderBy(p => p.Points).Take(5).ToList().ForEach(p => { writer.WriteLine("{0} {1}", p.Name, p.Points); });
+            }
+        }
+
+        private static void ReadScores(string fileName, ICollection<Player> players)
+        {
+            if (!File.Exists(fileName))
+            {
+                CreateFile(fileName, players);
             }
 
-            if (index < 5)
+            using (var reader = new StreamReader(fileName))
             {
-                scores[index] = score;
-                names[index] = name;
-            }
-            else
-            {
-                if (score < scores[index - 1])
+                string line;
+                while ((line = reader.ReadLine()) != null)
                 {
-                    scores[index - 1] = score;
-                    names[index - 1] = name;
+                    var nameAndPoints = line.Split();
+                    players.Add(new Player(new Position(Configuration.GAME_FIELD_SIZE / 2, Configuration.GAME_FIELD_SIZE / 2))
+                    {
+                        Name = nameAndPoints[0],
+                        Points = Int32.Parse(nameAndPoints[1])
+                    });
                 }
             }
-            if (index == 5) index = 4;
-            for (int i = 0; i <= index - 1; i++)
-                for (int j = i + 1; j <= index; j++)
-                    if (scores[i] > scores[j])
-                    {
-                        int swapValue = scores[i];
-                        scores[i] = scores[j];
-                        scores[j] = swapValue;
-                        string swapValueString = names[i];
-                        names[i] = names[j];
-                        names[j] = swapValueString;
-                    }
-
-            fileReader.Close();
-            StreamWriter fileWriter = file.CreateText();
-            for (int i = 0; i <= index; i++)
-            {
-                fileWriter.WriteLine("{0} {1}", names[i], scores[i], i + 1);
-            }
-
-            fileWriter.Close();
         }
     }
 }

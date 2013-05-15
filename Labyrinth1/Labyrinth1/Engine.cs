@@ -8,7 +8,6 @@ namespace Labyrinth
 {
     public class Engine
     {
-        private const int MovesStartAmount = 0;
         private ObjectRenderer renderer;
         private Player player;
         private Playfield playfield;
@@ -24,10 +23,10 @@ namespace Labyrinth
 
         public void Run()
         {
-            int moves = MovesStartAmount;
             String input = "";
             this.player.RestartDefaultPosition();
             this.playfield.CreateLabyrinth();
+            this.player = new Player();
             this.renderer.Render(this.playfield, this.player);
             Message.PrintDirectionsMessage();
             while ((input = Console.ReadLine()) != "exit")
@@ -37,7 +36,7 @@ namespace Labyrinth
                 switch (input)
                 {
                     case "top":
-                        this.scoreboard.pokazvane();
+                        Console.WriteLine(this.scoreboard.Show(Configuration.FILE_NAME));
                         break;
                     case "restart":
                         //newGame();
@@ -47,7 +46,6 @@ namespace Labyrinth
 
                         if (this.playfield.Labyrinth[this.player.GetPosition.Row, this.player.GetPosition.Col - 1] == 0)
                         {
-                            moves++;
                             this.player.Move(Direction.Left);
                         }
                         else
@@ -60,7 +58,6 @@ namespace Labyrinth
 
                         if (this.playfield.Labyrinth[this.player.GetPosition.Row - 1, this.player.GetPosition.Col] == 0)
                         {
-                            moves++;
                             this.player.Move(Direction.Up);
                         }
                         else
@@ -73,7 +70,6 @@ namespace Labyrinth
 
                         if (this.playfield.Labyrinth[this.player.GetPosition.Row, this.player.GetPosition.Col + 1] == 0)
                         {
-                            moves++;
                             this.player.Move(Direction.Right);
                         }
                         else
@@ -86,7 +82,6 @@ namespace Labyrinth
 
                         if (this.playfield.Labyrinth[this.player.GetPosition.Row + 1, this.player.GetPosition.Col] == 0)
                         {
-                            moves++;
                             this.player.Move(Direction.Down);
                         }
                         else
@@ -106,16 +101,9 @@ namespace Labyrinth
                 if (this.player.HasWon())
                 {
                     renderer.Render(this.playfield, this.player);
-                    Message.PrintWinningMessage(moves);
-                    string name = Console.ReadLine();
-                    try
-                    {
-                        this.scoreboard.add(name, moves);
-                    }
-                    finally
-                    {
-                    }
-
+                    Message.PrintWinningMessage(this.player.Points);
+                    player.Name = Console.ReadLine();
+                    this.scoreboard.Add(Configuration.FILE_NAME, player);
                     Message.PintNewLine();
                     this.Run();
                 }
