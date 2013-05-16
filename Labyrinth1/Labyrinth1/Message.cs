@@ -19,7 +19,7 @@ namespace Labyrinth
             Console.WriteLine("Welcome to \"Labyrinth\" game. Please try to escape. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.");
         }
 
-        public static void PintNewLine()
+        public static void PrintNewLine()
         {
             Console.WriteLine();
         }

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Labyrinth
 {
@@ -12,7 +8,6 @@ namespace Labyrinth
         {
             for (int row = 0; row < 7; row++)
             {
-
                 for (int col = 0; col < 7; col++)
                 {
                     if (player.GetPosition.Row == row && player.GetPosition.Col == col)
@@ -32,7 +27,7 @@ namespace Labyrinth
                     }
                 }
 
-                Console.WriteLine();
+                Message.PrintNewLine();
             }
         }
     }

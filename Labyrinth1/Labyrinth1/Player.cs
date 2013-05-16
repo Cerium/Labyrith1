@@ -50,10 +50,7 @@ namespace Labyrinth
                 this.position = new Position(value.Row, value.Col);
             }
         }
-
         
-
-
         public void RestartDefaultPosition()
         {
             this.position = new Position(PlayerRow, PlayerCol);
@@ -89,8 +86,8 @@ namespace Labyrinth
                     this.position.Row += 1;
                     break;             
             }
+
             this.Points++;
-        }
-        
+        }        
     }
 }

@@ -28,7 +28,7 @@ namespace Labyrinth
             var players = new List<Player>();
             ReadScores(fileName, players);
 
-            players.Add(new Player(new Position(Configuration.GAME_FIELD_SIZE / 2, Configuration.GAME_FIELD_SIZE / 2))
+            players.Add(new Player(new Position(Configuration.GameFieldSize / 2, Configuration.GameFieldSize / 2))
             {
                 Name = player.Name,
                 Points = player.Points
@@ -58,7 +58,7 @@ namespace Labyrinth
                 while ((line = reader.ReadLine()) != null)
                 {
                     var nameAndPoints = line.Split();
-                    players.Add(new Player(new Position(Configuration.GAME_FIELD_SIZE / 2, Configuration.GAME_FIELD_SIZE / 2))
+                    players.Add(new Player(new Position(Configuration.GameFieldSize / 2, Configuration.GameFieldSize / 2))
                     {
                         Name = nameAndPoints[0],
                         Points = Int32.Parse(nameAndPoints[1])

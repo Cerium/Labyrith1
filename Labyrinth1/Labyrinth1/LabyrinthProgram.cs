@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Linq;
 
 namespace Labyrinth
 {
     public class LabyrinthProgram
     {
-        static void Main(string[] args)
+        static void Main()
         {            
             ObjectRenderer renderer = new ObjectRenderer();
             Player player = new Player();

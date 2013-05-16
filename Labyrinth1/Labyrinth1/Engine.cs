@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Labyrinth
 {
@@ -23,27 +19,23 @@ namespace Labyrinth
 
         public void Run()
         {
-            String input = "";
+            Message.PrintIntro();
+            string userInput;
             this.player.RestartDefaultPosition();
-            this.playfield.CreateLabyrinth();
-            this.player = new Player();
+            this.playfield.CreateLabyrinth();            
             this.renderer.Render(this.playfield, this.player);
             Message.PrintDirectionsMessage();
-            while ((input = Console.ReadLine()) != "exit")
+            while ((userInput = Console.ReadLine()) != "exit")
             {
-                //uncomment;
-                //int[,] labyrinthImage = playfield.GetImage();
-                switch (input)
+                switch (userInput)
                 {
                     case "top":
-                        Console.WriteLine(this.scoreboard.Show(Configuration.FILE_NAME));
+                        Console.WriteLine(this.scoreboard.Show(Configuration.FileName));
                         break;
-                    case "restart":
-                        //newGame();
+                    case "restart":                        
                         this.Run();
                         break;
                     case "L":
-
                         if (this.playfield.Labyrinth[this.player.GetPosition.Row, this.player.GetPosition.Col - 1] == 0)
                         {
                             this.player.Move(Direction.Left);
@@ -55,7 +47,6 @@ namespace Labyrinth
 
                         break;
                     case "U":
-
                         if (this.playfield.Labyrinth[this.player.GetPosition.Row - 1, this.player.GetPosition.Col] == 0)
                         {
                             this.player.Move(Direction.Up);
@@ -67,7 +58,6 @@ namespace Labyrinth
 
                         break;
                     case "R":
-
                         if (this.playfield.Labyrinth[this.player.GetPosition.Row, this.player.GetPosition.Col + 1] == 0)
                         {
                             this.player.Move(Direction.Right);
@@ -79,7 +69,6 @@ namespace Labyrinth
 
                         break;
                     case "D":
-
                         if (this.playfield.Labyrinth[this.player.GetPosition.Row + 1, this.player.GetPosition.Col] == 0)
                         {
                             this.player.Move(Direction.Down);
@@ -97,16 +86,19 @@ namespace Labyrinth
                         }
                 }
 
-
                 if (this.player.HasWon())
                 {
                     renderer.Render(this.playfield, this.player);
                     Message.PrintWinningMessage(this.player.Points);
+
                     player.Name = Console.ReadLine();
-                    this.scoreboard.Add(Configuration.FILE_NAME, player);
-                    Message.PintNewLine();
+                    this.scoreboard.Add(Configuration.FileName, player);
+                    this.player.Points = 0;
+
+                    Message.PrintNewLine();                    
                     this.Run();
                 }
+                
                 renderer.Render(this.playfield, this.player);
                 Message.PrintDirectionsMessage();
             }
