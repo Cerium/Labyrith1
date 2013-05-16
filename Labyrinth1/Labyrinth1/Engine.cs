@@ -19,12 +19,12 @@ namespace Labyrinth
 
         public void Run()
         {
-            Message.PrintIntro();
+            Console.WriteLine(Message.PrintIntro());
             string input;
             this.player.RestartDefaultPosition();
             this.playfield.CreateLabyrinth();            
             this.renderer.Render(this.playfield, this.player);
-            Message.PrintDirectionsMessage();
+            Console.WriteLine(Message.PrintDirectionsMessage());
             while ((input = Console.ReadLine()) != "exit")
             {
                 string userInput = input.ToUpper();
@@ -43,7 +43,7 @@ namespace Labyrinth
                         }
                         else
                         {
-                            Message.PrintInvalidMoveMessage();
+                            Console.WriteLine(Message.PrintInvalidMoveMessage());
                         }
 
                         break;
@@ -54,7 +54,7 @@ namespace Labyrinth
                         }
                         else
                         {
-                            Message.PrintInvalidMoveMessage();
+                            Console.WriteLine(Message.PrintInvalidMoveMessage());
                         }
 
                         break;
@@ -65,7 +65,7 @@ namespace Labyrinth
                         }
                         else
                         {
-                            Message.PrintInvalidMoveMessage();
+                            Console.WriteLine(Message.PrintInvalidMoveMessage());
                         }
 
                         break;
@@ -76,13 +76,13 @@ namespace Labyrinth
                         }
                         else
                         {
-                            Message.PrintInvalidMoveMessage();
+                            Console.WriteLine(Message.PrintInvalidMoveMessage());
                         }
 
                         break;
                     default:
                         {
-                            Message.PrintInvalidMoveMessage();
+                            Console.WriteLine(Message.PrintInvalidMoveMessage());
                             break;
                         }
                 }
@@ -90,18 +90,18 @@ namespace Labyrinth
                 if (this.player.HasWon())
                 {
                     renderer.Render(this.playfield, this.player);
-                    Message.PrintWinningMessage(this.player.Points);
+                    Console.WriteLine(Message.PrintWinningMessage(this.player.Points));
 
                     player.Name = Console.ReadLine();
                     this.scoreboard.Add(Configuration.FileName, player);
                     this.player.Points = 0;
 
-                    Message.PrintNewLine();                    
+                    Console.WriteLine(Message.PrintNewLine());                    
                     this.Run();
                 }
                 
                 renderer.Render(this.playfield, this.player);
-                Message.PrintDirectionsMessage();
+                Console.WriteLine(Message.PrintDirectionsMessage());
             }
         }
     }
