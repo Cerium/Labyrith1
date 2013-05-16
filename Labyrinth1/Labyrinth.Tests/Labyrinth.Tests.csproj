@@ -59,6 +59,8 @@
     <Compile Include="PlayerTest.cs" />
     <Compile Include="PositionTest.cs" />
     <Compile Include="PlayfieldTest.cs" />
+    <Compile Include="ObjectRendererTest.cs" />
+    <Compile Include="EngineTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Labyrinth1\Labyrinth.csproj">
