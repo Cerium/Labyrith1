@@ -38,17 +38,5 @@ namespace Labyrinth.Tests
             bool expected = false;
             Assert.AreEqual(expected, actual);
         }
-
-        [TestMethod]
-        public void Playfield_Set_Position_Test()
-        {
-            BindingFlags eFlags = BindingFlags.Instance | BindingFlags.NonPublic;
-            Playfield palyfield = new Playfield();
-            Object[] arguments = new object[] { 5 };
-            MethodInfo testedMethod = typeof(Playfield).GetMethod("Labyrinth", eFlags);
-            int[] actual = (int[])testedMethod.Invoke(palyfield.Labyrinth, arguments);
-            int[] expected =new int[]{3,3} ;
-            Assert.AreEqual(expected, actual);
-        }
     }
 }
