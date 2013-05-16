@@ -7,21 +7,30 @@ namespace Labyrinth.Tests
     public class PlayerTest
     {
         [TestMethod]
-        public void ConstructorTest_Col_POsition()
+        public void ConstructorTest_Col_Position()
         {
             Player player = new Player();
             int actual = player.GetPosition.Col;
             int expected = Player.PlayerCol;
             Assert.AreEqual(expected, actual);
-
         }
 
         [TestMethod]
-        public void ConstructorTest_Row_POsition()
+        public void ConstructorTest_Row_Position()
         {
             Player player = new Player();
             int actual = player.GetPosition.Row;
             int expected = Player.PlayerRow;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ConstructorTest_Name_Pesho()
+        {
+            Player player = new Player();
+            player.Name = "Pesho";
+            string actual = player.Name;
+            string expected = "Pesho";
             Assert.AreEqual(expected, actual);
 
         }
