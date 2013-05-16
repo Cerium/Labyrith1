@@ -30,10 +30,10 @@ namespace Labyrinth
                 string userInput = input.ToUpper();
                 switch (userInput)
                 {
-                    case "top":
+                    case "TOP":
                         Console.WriteLine(this.scoreboard.Show(Configuration.FileName));
                         break;
-                    case "restart":                        
+                    case "RESTART":                        
                         this.Run();
                         break;
                     case "L":

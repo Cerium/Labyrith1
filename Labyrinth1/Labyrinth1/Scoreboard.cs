@@ -17,7 +17,7 @@ namespace Labyrinth
             var count = 0;
             players.ForEach(p =>
             {
-                sb.AppendFormat("{0}: {1} -> {2}" + Environment.NewLine, ++count, p.Name, p.Points);
+                sb.AppendFormat("{0}: {1}" + Environment.NewLine, ++count, p.ToString());
             });
 
             return sb.ToString();
@@ -41,7 +41,10 @@ namespace Labyrinth
         {
             using (var writer = new StreamWriter(fileName))
             {
-                players.OrderBy(p => p.Points).Take(5).ToList().ForEach(p => { writer.WriteLine("{0} {1}", p.Name, p.Points); });
+                players.OrderBy(p => p.Points).Take(5).ToList().ForEach(p =>
+                    {
+                        writer.WriteLine(p.ToString());
+                    });
             }
         }
 
@@ -61,7 +64,7 @@ namespace Labyrinth
                     players.Add(new Player(new Position(Configuration.GameFieldSize / 2, Configuration.GameFieldSize / 2))
                     {
                         Name = nameAndPoints[0],
-                        Points = Int32.Parse(nameAndPoints[1])
+                        Points = Int32.Parse(nameAndPoints[2])
                     });
                 }
             }
