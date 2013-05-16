@@ -27,7 +27,7 @@ namespace Labyrinth
                     }
                 }
 
-                Message.PrintNewLine();
+                Console.WriteLine(Message.PrintNewLine());
             }
         }
     }

@@ -4,34 +4,41 @@ namespace Labyrinth
 {
     public static class Message
     {
-        public static void PrintInvalidMoveMessage()
+        public static string PrintInvalidMoveMessage()
         {
-            Console.WriteLine(" Invalid move!");
+            string message = " Invalid move!";
+            return message;
         }
 
-        public static void PrintDirectionsMessage()
+        public static string PrintDirectionsMessage()
         {
-            Console.Write("Enter your move (L=left, R=right, U=up, D=down): ");
+            string message = "Enter your move (L=left, R=right, U=up, D=down): ";
+            return message;
         }
 
-        public static void PrintIntro()
+        public static string PrintIntro()
         {
-            Console.WriteLine("Welcome to \"Labyrinth\" game. Please try to escape. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.");
+            string message = "Welcome to \"Labyrinth\" game. Please try to escape. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.";
+            return message;
+
         }
 
-        public static void PrintNewLine()
+        public static string PrintNewLine()
         {
-            Console.WriteLine();
+            string newLine = string.Empty;
+            return newLine;
         }
 
-        public static void PrintWinningMessage(int moves)
+        public static string PrintWinningMessage(int moves)
         {
-            Console.Write("Congratulations! You escaped in {0} moves.\nPlease enter your name for the top scoreboard: ", moves);
+            string message = "Congratulations! You escaped in " + moves + " moves.\nPlease enter your name for the top scoreboard: ";
+            return message;
         }
 
-        public static void PrintInstructionsMessage()
+        public static string PrintInstructionsMessage()
         {
-            Console.WriteLine("You are playing \"Labyrinth\" game. Please try to escape. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.");
+            string message = "You are playing \"Labyrinth\" game. Please try to escape. Use 'top' to view the top scoreboard, 'restart' to start a new game and 'exit' to quit the game.";
+            return message;
         }
     }
 }

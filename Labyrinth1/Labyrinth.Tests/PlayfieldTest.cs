@@ -27,11 +27,26 @@ namespace Labyrinth.Tests
         }
 
         [TestMethod]
-        public void IsVisitedPosition_Test()
+        public void IsVisitedPosition_Test_False()
         {
             BindingFlags eFlags = BindingFlags.Instance | BindingFlags.NonPublic;
             Playfield palyfield = new Playfield();
             Player player = new Player(); 
+            Direction direction = Direction.Left;
+            Object[] arguments = new object[] { player, direction };
+            MethodInfo testedMethod = typeof(Playfield).GetMethod("IsVisitedPosition", eFlags);
+            bool actual = (bool)testedMethod.Invoke(palyfield, arguments);
+            bool expected = false;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void IsVisitedPosition_Test_True()
+        {
+            BindingFlags eFlags = BindingFlags.Instance | BindingFlags.NonPublic;
+            Playfield palyfield = new Playfield();
+            Position position = new Position(3, 5);
+            Player player = new Player(position);
             Direction direction = Direction.Left;
             Object[] arguments = new object[] { player, direction };
             MethodInfo testedMethod = typeof(Playfield).GetMethod("IsVisitedPosition", eFlags);
