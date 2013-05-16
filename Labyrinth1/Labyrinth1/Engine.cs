@@ -20,13 +20,14 @@ namespace Labyrinth
         public void Run()
         {
             Message.PrintIntro();
-            string userInput;
+            string input;
             this.player.RestartDefaultPosition();
             this.playfield.CreateLabyrinth();            
             this.renderer.Render(this.playfield, this.player);
             Message.PrintDirectionsMessage();
-            while ((userInput = Console.ReadLine()) != "exit")
+            while ((input = Console.ReadLine()) != "exit")
             {
+                string userInput = input.ToUpper();
                 switch (userInput)
                 {
                     case "top":

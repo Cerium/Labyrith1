@@ -44,7 +44,7 @@
     <Compile Include="Configuration.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="Engine.cs" />
-    <Compile Include="LabyrinthProgram.cs" />
+    <Compile Include="LabyrinthGame.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="ObjectRenderer.cs" />
     <Compile Include="Player.cs" />
