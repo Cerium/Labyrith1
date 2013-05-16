@@ -19,16 +19,6 @@ namespace Labyrinth
             {
                 return this.labyrinth;
             }
-
-            set
-            {
-                if (value.GetLength(0) != PlayfieldRows || value.GetLength(1) != PlayfieldCols)
-                {
-                    throw new ArgumentOutOfRangeException("Labyrinth", "Incorrect playfield size!");
-                }
-
-                this.labyrinth = new int[value.GetLength(0), value.GetLength(1)];
-            }
         }      
      
         private bool IsVisitedPosition(Player player, Direction direction)

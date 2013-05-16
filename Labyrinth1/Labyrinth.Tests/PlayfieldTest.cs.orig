@@ -40,6 +40,21 @@ namespace Labyrinth.Tests
             Assert.AreEqual(expected, actual);
         }
 
+<<<<<<< HEAD
+        /// <summary>
+        ///A test for Labyrinth
+        ///</summary>
+        [TestMethod()]
+        public void LabyrinthTest()
+        {
+            Playfield target = new Playfield(); // TODO: Initialize to an appropriate value
+            int[,] expected = null; // TODO: Initialize to an appropriate value
+            int[,] actual;
+            target.Labyrinth = expected;
+            actual = target.Labyrinth;
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
+=======
         [TestMethod]
         public void IsVisitedPosition_Test_True()
         {
@@ -53,6 +68,7 @@ namespace Labyrinth.Tests
             bool actual = (bool)testedMethod.Invoke(palyfield, arguments);
             bool expected = false;
             Assert.AreEqual(expected, actual);
+>>>>>>> 8e4299e0f757b280f10c644ecfcac181564fecb2
         }
     }
 }

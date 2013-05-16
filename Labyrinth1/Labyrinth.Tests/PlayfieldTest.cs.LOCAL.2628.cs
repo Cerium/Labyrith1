@@ -27,7 +27,7 @@ namespace Labyrinth.Tests
         }
 
         [TestMethod]
-        public void IsVisitedPosition_Test_False()
+        public void IsVisitedPosition_Test()
         {
             BindingFlags eFlags = BindingFlags.Instance | BindingFlags.NonPublic;
             Playfield palyfield = new Playfield();
@@ -40,19 +40,19 @@ namespace Labyrinth.Tests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]
-        public void IsVisitedPosition_Test_True()
+        /// <summary>
+        ///A test for Labyrinth
+        ///</summary>
+        [TestMethod()]
+        public void LabyrinthTest()
         {
-            BindingFlags eFlags = BindingFlags.Instance | BindingFlags.NonPublic;
-            Playfield palyfield = new Playfield();
-            Position position = new Position(3, 5);
-            Player player = new Player(position);
-            Direction direction = Direction.Left;
-            Object[] arguments = new object[] { player, direction };
-            MethodInfo testedMethod = typeof(Playfield).GetMethod("IsVisitedPosition", eFlags);
-            bool actual = (bool)testedMethod.Invoke(palyfield, arguments);
-            bool expected = false;
+            Playfield target = new Playfield(); // TODO: Initialize to an appropriate value
+            int[,] expected = null; // TODO: Initialize to an appropriate value
+            int[,] actual;
+            target.Labyrinth = expected;
+            actual = target.Labyrinth;
             Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
         }
     }
 }
