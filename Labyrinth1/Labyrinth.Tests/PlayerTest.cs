@@ -43,7 +43,7 @@ namespace Labyrinth.Tests
             player.Move(direction);
             player.Move(direction);
             player.Move(direction);
-    
+
             int actual = player.GetPosition.Row;
             int expected = 3;
             Assert.AreEqual(expected, actual);
@@ -101,7 +101,7 @@ namespace Labyrinth.Tests
         {
             Position position = new Position(8, 0);
             Player player = new Player(position);
-            int actual = player.GetPosition.Col;          
+            int actual = player.GetPosition.Col;
         }
 
         [TestMethod]
@@ -122,6 +122,21 @@ namespace Labyrinth.Tests
             player.RestartDefaultPosition();
             int actual = player.GetPosition.Col;
             int expected = Player.PlayerCol;
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void ToString_Name_Pesho_Points_2()
+        {
+            Direction directionToLeft = Direction.Left;
+            Direction directionToRight = Direction.Right;
+            Player player = new Player();
+            player.Move(directionToLeft);
+            player.Move(directionToRight);
+            player.Name = "Pesho";
+            string actual = player.ToString();
+            string expected = "Pesho -> 2"; 
+
             Assert.AreEqual(expected, actual);
         }
     }
