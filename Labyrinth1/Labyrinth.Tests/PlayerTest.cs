@@ -106,7 +106,7 @@ namespace Labyrinth.Tests
         }
 
         [TestMethod]
-        public void restart_Deafault_Position_Test()
+        public void Restart_Deafault_Position_Test()
         {
             Position position = new Position(4, 4);
             Player player = new Player(position);
