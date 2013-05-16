@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Reflection;
+using Labyrinth;
 
 namespace Labyrinth.Tests
 {
@@ -37,6 +38,21 @@ namespace Labyrinth.Tests
             bool actual = (bool)testedMethod.Invoke(palyfield, arguments);
             bool expected = false;
             Assert.AreEqual(expected, actual);
+        }
+
+        /// <summary>
+        ///A test for Labyrinth
+        ///</summary>
+        [TestMethod()]
+        public void LabyrinthTest()
+        {
+            Playfield target = new Playfield(); // TODO: Initialize to an appropriate value
+            int[,] expected = null; // TODO: Initialize to an appropriate value
+            int[,] actual;
+            target.Labyrinth = expected;
+            actual = target.Labyrinth;
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
         }
     }
 }

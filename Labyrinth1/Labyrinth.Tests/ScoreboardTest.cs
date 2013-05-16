@@ -63,28 +63,18 @@ namespace Labyrinth.Tests
         //
         #endregion
 
-
-        /// <summary>
-        ///A test for Scoreboard Constructor
-        ///</summary>
-        [TestMethod()]
-        public void ScoreboardConstructorTest()
-        {
-            Scoreboard target = new Scoreboard();
-            Assert.Inconclusive("TODO: Implement code to verify target");
-        }
-
         /// <summary>
         ///A test for Add
         ///</summary>
         [TestMethod()]
         public void AddTest()
         {
-            Scoreboard target = new Scoreboard(); // TODO: Initialize to an appropriate value
-            string fileName = string.Empty; // TODO: Initialize to an appropriate value
-            Player player = null; // TODO: Initialize to an appropriate value
+            Scoreboard target = new Scoreboard();
+            string fileName = "AddTest.txt";
+            Player player = new Player();
+            player.Name = "nakov";
+            player.Points = 10;
             target.Add(fileName, player);
-            Assert.Inconclusive("A method that does not return a value cannot be verified.");
         }
 
         /// <summary>
@@ -93,13 +83,17 @@ namespace Labyrinth.Tests
         [TestMethod()]
         public void ShowTest()
         {
-            Scoreboard target = new Scoreboard(); // TODO: Initialize to an appropriate value
-            string fileName = string.Empty; // TODO: Initialize to an appropriate value
-            string expected = string.Empty; // TODO: Initialize to an appropriate value
+            Scoreboard target = new Scoreboard();
+            string fileName = "ShowTest2.txt";
+            Player player = new Player();
+            player.Name = "nakov";
+            player.Points = 10;
+            target.Add(fileName, player);
+
+            string expected = "1: nakov -> 10" + Environment.NewLine;
             string actual;
             actual = target.Show(fileName);
             Assert.AreEqual(expected, actual);
-            Assert.Inconclusive("Verify the correctness of this test method.");
         }
     }
 }
