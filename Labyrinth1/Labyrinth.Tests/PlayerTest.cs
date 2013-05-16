@@ -115,7 +115,5 @@ namespace Labyrinth.Tests
             int expected = Player.PlayerCol;
             Assert.AreEqual(expected, actual);
         }
-
-
     }
 }
