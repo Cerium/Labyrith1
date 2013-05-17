@@ -39,7 +39,7 @@ namespace Labyrinth
 
         private static void CreateFile(string fileName, IEnumerable<Player> players)
         {
-            using (var writer = new StreamWriter(fileName))
+            using (var writer = new StreamWriter(fileName, false))
             {
                 players.OrderBy(p => p.Points).Take(5).ToList().ForEach(p =>
                     {

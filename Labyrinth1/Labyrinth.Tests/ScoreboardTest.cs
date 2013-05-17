@@ -82,7 +82,7 @@ namespace Labyrinth.Tests
         public void ShowTest()
         {
             Scoreboard target = new Scoreboard();
-            string fileName = "ShowTest3.txt";
+            string fileName = "ShowTest.txt";
             Player player = new Player();
             player.Name = "nakov";
             player.Points = 10;

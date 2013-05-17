@@ -19,15 +19,20 @@ namespace Labyrinth
 
         public void Run()
         {
-            Console.WriteLine(Message.PrintIntro());
-            string input;
+            Console.WriteLine(Message.PrintIntro());           
             this.player.RestartDefaultPosition();
             this.playfield.CreateLabyrinth();            
             this.renderer.Render(this.playfield, this.player);
             Console.Write(Message.PrintDirectionsMessage());
+            string input;
             while ((input = Console.ReadLine()) != "exit")
-            {
+            {                
                 string userInput = input.ToUpper();
+                if (userInput == "EXIT")
+                {
+                    break;
+                }
+
                 switch (userInput)
                 {
                     case "TOP":
