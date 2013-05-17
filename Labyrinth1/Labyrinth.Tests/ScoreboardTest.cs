@@ -13,8 +13,6 @@ namespace Labyrinth.Tests
     [TestClass()]
     public class ScoreboardTest
     {
-
-
         private TestContext testContextInstance;
 
         /// <summary>

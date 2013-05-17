@@ -24,7 +24,7 @@ namespace Labyrinth
             this.player.RestartDefaultPosition();
             this.playfield.CreateLabyrinth();            
             this.renderer.Render(this.playfield, this.player);
-            Console.WriteLine(Message.PrintDirectionsMessage());
+            Console.Write(Message.PrintDirectionsMessage());
             while ((input = Console.ReadLine()) != "exit")
             {
                 string userInput = input.ToUpper();
@@ -90,7 +90,7 @@ namespace Labyrinth
                 if (this.player.HasWon())
                 {
                     renderer.Render(this.playfield, this.player);
-                    Console.WriteLine(Message.PrintWinningMessage(this.player.Points));
+                    Console.Write(Message.PrintWinningMessage(this.player.Points));
 
                     player.Name = Console.ReadLine();
                     this.scoreboard.Add(Configuration.FileName, player);
@@ -101,7 +101,7 @@ namespace Labyrinth
                 }
                 
                 renderer.Render(this.playfield, this.player);
-                Console.WriteLine(Message.PrintDirectionsMessage());
+                Console.Write(Message.PrintDirectionsMessage());
             }
         }
     }
